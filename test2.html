@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="es" class="dark theme-normal">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blox Fruits Globally Player | Comunidad PvP Competitiva</title>
+<meta name="description" content="Portal oficial de competencias Blox Fruits: rankings por región, top de frutas, países, creadores y más.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: { brand: { gold:'#fbbf24', cyan:'#06b6d4', purple:'#a855f7' } },
+                fontFamily: { sans:['Outfit','sans-serif'], pixel:['"Press Start 2P"','cursive'] },
+                keyframes: {
+                    fadeInUp: { '0%':{opacity:0,transform:'translateY(20px)'},'100%':{opacity:1,transform:'translateY(0)'} },
+                    fadeIn:   { '0%':{opacity:0},'100%':{opacity:1} },
+                    glowPulse:{ '0%,100%':{boxShadow:'0 0 15px rgba(6,182,212,.4)'},'50%':{boxShadow:'0 0 30px rgba(6,182,212,.85)'} },
+                    floatY:   { '0%,100%':{transform:'translateY(0)'},'50%':{transform:'translateY(-6px)'} },
+                    shine:    { '0%':{backgroundPosition:'-200% center'},'100%':{backgroundPosition:'200% center'} },
+                    popIn:    { '0%':{opacity:0,transform:'scale(.9)'},'100%':{opacity:1,transform:'scale(1)'} }
+                },
+                animation: {
+                    'fade-up':'fadeInUp .55s cubic-bezier(.16,1,.3,1) both',
+                    'fade-in':'fadeIn .6s ease both',
+                    'glow':'glowPulse 2.4s ease-in-out infinite',
+                    'float':'floatY 3.2s ease-in-out infinite',
+                    'pop':'popIn .35s cubic-bezier(.16,1,.3,1) both'
+                }
+            }
+        }
+    }
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+    /* ============================================================
+       BLOQUEO GLOBAL DE SELECCIÓN
+       ============================================================ */
+    * { -webkit-tap-highlight-color: transparent; }
+    html, body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    input, textarea, [contenteditable="true"] {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+
+    /* ============================================================
+       FONDO GLOBAL
+       ============================================================ */
+    :root { --bg-image: url('https://i.imgur.com/Qexv3LR.png'); }
+    html, body { min-height:100%; }
+
+    .bf-app-wrapper {
+        background-color: #000510;
+        background-image: linear-gradient(rgba(0,5,16,.55), rgba(0,5,16,.75)), var(--bg-image);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        color:#f3f4f6;
+        transition: background-color .3s, color .3s;
+    }
+
+    /* TEMA NORMAL */
+    html.theme-normal .bf-app-wrapper {
+        background-color: #000510;
+        background-image: linear-gradient(rgba(0,5,16,.55), rgba(0,5,16,.75)), var(--bg-image);
+    }
+
+    /* TEMA DARK */
+    html.theme-dark .bf-app-wrapper {
+        background-color: #000 !important;
+        background-image: linear-gradient(rgba(0,0,0,.92), rgba(0,0,0,.97)), var(--bg-image) !important;
+        color: #e5e7eb !important;
+    }
+    html.theme-dark header { background-color: rgba(0,0,0,.95) !important; border-color:#111 !important; }
+    html.theme-dark footer { background-color:#000 !important; border-color:#111 !important; }
+    html.theme-dark .bg-slate-900\/90,
+    html.theme-dark .bg-slate-900\/80,
+    html.theme-dark .bg-slate-900 { background-color: #080808 !important; }
+    html.theme-dark .bg-slate-950 { background-color: #000 !important; }
+    html.theme-dark .border-slate-800,
+    html.theme-dark .border-slate-800\/80,
+    html.theme-dark .border-slate-800\/60 { border-color: #141414 !important; }
+    html.theme-dark .theme-switcher { background: rgba(0,0,0,.9) !important; border-color:#1a1a1a !important; }
+
+    /* TEMA CLARO */
+    html.theme-light .bf-app-wrapper {
+        background-color: #f1f5f9 !important;
+        background-image: linear-gradient(rgba(241,245,249,.92), rgba(241,245,249,.96)), var(--bg-image);
+        color: #0f172a !important;
+    }
+    html.theme-light header { background-color: rgba(255,255,255,.95) !important; border-color:#e2e8f0 !important; }
+    html.theme-light footer { background-color: #e2e8f0 !important; }
+    html.theme-light .bg-slate-900\/90,
+    html.theme-light .bg-slate-900\/80,
+    html.theme-light .bg-slate-900 { background-color: #ffffff !important; border-color:#cbd5e1 !important; }
+    html.theme-light .bg-slate-950 { background-color: #f8fafc !important; }
+    html.theme-light .border-slate-800,
+    html.theme-light .border-slate-800\/80,
+    html.theme-light .border-slate-800\/60 { border-color: #cbd5e1 !important; }
+    html.theme-light .text-white,
+    html.theme-light .text-slate-300 { color: #0f172a !important; }
+    html.theme-light .text-slate-400,
+    html.theme-light .text-slate-500 { color: #475569 !important; }
+    html.theme-light .theme-switcher { background: rgba(255,255,255,.95) !important; border-color:#cbd5e1 !important; }
+
+    .glow-title { text-shadow: 0 0 20px rgba(6,182,212,.6), 0 0 40px rgba(168,85,247,.4); }
+    .glow-gold  { text-shadow: 0 0 15px rgba(251,191,36,.8); }
+    .card-hover { transition: all .3s cubic-bezier(.4,0,.2,1); }
+    .card-hover:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 14px 30px -8px rgba(6,182,212,.35); }
+
+    .rank-gold   { background:linear-gradient(135deg,#fbbf24,#f59e0b); color:#0b0f19; font-weight:900; }
+    .rank-silver { background:linear-gradient(135deg,#e5e7eb,#9ca3af); color:#0b0f19; font-weight:900; }
+    .rank-bronze { background:linear-gradient(135deg,#d97706,#92400e); color:#fff; font-weight:900; }
+    .rank-normal { background:#1f2937; color:#94a3b8; font-weight:800; border:1px solid #334155; }
+    html.theme-light .rank-normal { background:#e2e8f0; color:#475569; border-color:#cbd5e1; }
+
+    .flag-img { display:inline-block; height:1.1em; width:auto; vertical-align:-2px; border-radius:3px; box-shadow: 0 1px 3px rgba(0,0,0,.4); }
+    .shine-text {
+        background: linear-gradient(90deg,#06b6d4 0%,#a855f7 25%,#fbbf24 50%,#a855f7 75%,#06b6d4 100%);
+        background-size:200% auto;
+        -webkit-background-clip:text; background-clip:text; color:transparent;
+        animation: shine 4s linear infinite;
+    }
+    ::-webkit-scrollbar { width:8px; height:8px; }
+    ::-webkit-scrollbar-track { background:#0b0f19; }
+    html.theme-light ::-webkit-scrollbar-track { background:#e2e8f0; }
+    ::-webkit-scrollbar-thumb { background:#1f2937; border-radius:4px; }
+    ::-webkit-scrollbar-thumb:hover { background:#06b6d4; }
+
+    /* ============================================================
+       TARJETA DE FRUTA — reborde conic-gradient animado
+       ============================================================ */
+    @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes rotate-border { to { --angle: 360deg; } }
+
+    .fruit-card {
+        position: relative;
+        background: #0f172a;
+        border-radius: 1rem;
+        padding: 2px;
+        isolation: isolate;
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .fruit-card::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 1rem;
+        padding: 2px;
+        background: conic-gradient(from var(--angle, 0deg), #06b6d4, #a855f7, #fbbf24, #ec4899, #06b6d4);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+                mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+                mask-composite: exclude;
+        opacity: .55;
+        transition: opacity .3s ease;
+        z-index: -1;
+        animation: rotate-border 6s linear infinite;
+    }
+    .fruit-card:hover::before { opacity: 1; }
+    .fruit-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 30px -8px rgba(168,85,247,.45); }
+    .fruit-card-inner {
+        background: #0b1220;
+        border-radius: calc(1rem - 2px);
+        padding: 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+    html.theme-light .fruit-card-inner { background:#ffffff; }
+    html.theme-light .fruit-card { background:#e2e8f0; }
+
+    .fruit-img-slot {
+        background: radial-gradient(circle at 30% 20%, rgba(6,182,212,.15), transparent 60%),
+                    radial-gradient(circle at 70% 80%, rgba(168,85,247,.15), transparent 60%),
+                    #0f172a;
+        border: 1.5px dashed #334155;
+        box-shadow: inset 0 0 12px rgba(6,182,212,.15);
+    }
+    html.theme-light .fruit-img-slot {
+        background: radial-gradient(circle at 30% 20%, rgba(6,182,212,.1), transparent 60%),
+                    radial-gradient(circle at 70% 80%, rgba(168,85,247,.1), transparent 60%),
+                    #f8fafc;
+        border-color:#94a3b8;
+    }
+
+    /* ============================================================
+       MODALES
+       ============================================================ */
+    body.modal-open { overflow:hidden; }
+    .modal-scroll-lock { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    .modal-overlay { display:none; align-items:center; justify-content:center; padding:1rem; overflow-y:auto; cursor:pointer; }
+    .modal-overlay:not(.hidden) { display:flex; }
+    .modal-overlay > .modal-content { cursor: default; }
+
+    /* ============================================================
+       MODAL PERFIL — avatar grande
+       ============================================================ */
+    .profile-banner {
+        height: 140px;
+        position: relative;
+        border-radius: 1.5rem 1.5rem 0 0;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center;
+    }
+    .profile-avatar-wrap {
+        position: absolute;
+        top: -70px;
+        left: 24px;
+        width: 128px;
+        height: 128px;
+        border-radius: 24px;
+        padding: 4px;
+        background: linear-gradient(135deg, #06b6d4, #a855f7);
+        box-shadow: 0 12px 30px rgba(0,0,0,.55);
+        z-index: 2;
+    }
+    .profile-avatar-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: #0b1220;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        color: #06b6d4;
+        font-size: 2.5rem;
+    }
+    .profile-avatar-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+    .profile-avatar-flag {
+        position: absolute;
+        bottom: -6px;
+        right: -6px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 3px solid #0b1220;
+        background: #0b1220;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,.5);
+    }
+    .profile-avatar-flag img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ============================================================
+       SELECTOR DE TEMA
+       ============================================================ */
+    .theme-switcher {
+        position: fixed; left: 12px; top: 50%; transform: translateY(-50%);
+        z-index: 45; display: flex; flex-direction: column; gap: 8px;
+        background: rgba(15,23,42,.85); padding: 8px; border-radius: 16px;
+        border: 1px solid rgba(51,65,85,.6); backdrop-filter: blur(12px);
+    }
+    .theme-btn {
+        width: 40px; height: 40px; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 16px; cursor: pointer; transition: all .25s;
+        border: 2px solid transparent;
+    }
+    .theme-btn:hover { transform: scale(1.1); }
+    .theme-btn.active { border-color:#06b6d4; box-shadow: 0 0 12px rgba(6,182,212,.5); }
+
+    /* ============================================================
+       TIER BADGES
+       ============================================================ */
+    .tier-badge {
+        display:inline-flex; align-items:center; justify-content:center;
+        padding:.15rem .55rem; border-radius:.5rem;
+        font-size:.7rem; font-weight:900; letter-spacing:.02em;
+        border:1px solid;
+    }
+    .tier-1 { background:linear-gradient(135deg,#fde047,#f59e0b); color:#3b1a00; border-color:#fde047; box-shadow:0 0 12px rgba(253,224,71,.6); }
+    .tier-2 { background:linear-gradient(135deg,#c084fc,#a855f7); color:#fff; border-color:#c084fc; box-shadow:0 0 10px rgba(192,132,252,.5); }
+    .tier-3 { background:linear-gradient(135deg,#60a5fa,#3b82f6); color:#fff; border-color:#60a5fa; }
+    .tier-4 { background:linear-gradient(135deg,#34d399,#10b981); color:#022c22; border-color:#34d399; }
+    .tier-5 { background:linear-gradient(135deg,#94a3b8,#64748b); color:#0f172a; border-color:#94a3b8; }
+    .tier-6 { background:linear-gradient(135deg,#6b7280,#374151); color:#e5e7eb; border-color:#6b7280; }
+</style>
+</head>
+<body class="dark bf-app-wrapper min-h-screen flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+<!-- ============ THEME SWITCHER ============ -->
+<div class="theme-switcher" role="group" aria-label="Selector de tema">
+    <button onclick="setTheme('light')" id="themeBtn-light" class="theme-btn bg-white text-slate-900" title="Tema claro"><i class="fa-solid fa-sun"></i></button>
+    <button onclick="setTheme('normal')" id="themeBtn-normal" class="theme-btn bg-gradient-to-br from-cyan-500 to-purple-600 text-white active" title="Tema normal"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    <button onclick="setTheme('dark')" id="themeBtn-dark" class="theme-btn bg-black text-white border border-slate-700" title="Tema oscuro"><i class="fa-solid fa-moon"></i></button>
+</div>
+
+<div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('inicio')">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 via-indigo-600 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 flex items-center justify-center animate-glow">
+                    <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid font-bold text-2xl text-cyan-400 fa-skull"></i>
+                    </div>
+                </div>
+                <div>
+                    <span class="font-extrabold text-xl sm:text-2xl tracking-tight shine-text">Blox Fruits Globally</span>
+                    <span class="block text-xs font-bold tracking-widest text-cyan-400 uppercase">Player Community ⚓</span>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center space-x-1">
+                <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-cyan-400 bg-slate-800/60 border border-cyan-500/30 transition"><i class="fa-solid fa-house mr-1.5"></i> Inicio</button>
+                <button onclick="switchTab('leaderboards')" id="nav-leaderboards" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-trophy mr-1.5 text-amber-400"></i> Leaderboards</button>
+                <button onclick="switchTab('frutas')" id="nav-frutas" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-apple-whole mr-1.5 text-rose-400"></i> Frutas</button>
+                <button onclick="switchTab('paises')" id="nav-paises" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-globe mr-1.5 text-emerald-400"></i> Países</button>
+                <button onclick="switchTab('creadores')" id="nav-creadores" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-video mr-1.5 text-pink-400"></i> Creadores</button>
+                <button onclick="switchTab('torneos')" id="nav-torneos" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-swords mr-1.5 text-purple-400"></i> Torneos</button>
+                <button onclick="switchTab('reglas')" id="nav-reglas" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-gavel mr-1.5 text-red-400"></i> Reglas</button>
+                <button onclick="switchTab('banned')" id="nav-banned" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition"><i class="fa-solid fa-user-slash mr-1.5 text-rose-500"></i> Baneados</button>
+                <button onclick="copyDiscordLink()" class="px-3 py-2 rounded-lg text-sm font-semibold text-indigo-300 bg-indigo-950/60 hover:bg-indigo-900/60 border border-indigo-500/30 transition flex items-center gap-1.5"><i class="fa-brands fa-discord text-indigo-400"></i> Discord</button>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="adminBtn" onclick="openAdminModal()" class="px-4 py-2 rounded-xl text-sm font-bold bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white shadow-lg shadow-red-600/20 transition-all transform hover:scale-105 flex items-center gap-2">
+                    <i class="fa-solid fa-lock" id="adminLockIcon"></i>
+                    <span id="adminBtnText">Modo Admin</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300"><i class="fa-solid fa-bars text-xl"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-slate-800 bg-slate-950 px-4 py-3 space-y-2">
+        <button onclick="switchTab('inicio');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-cyan-400 bg-slate-900"><i class="fa-solid fa-house mr-2"></i> Inicio</button>
+        <button onclick="switchTab('leaderboards');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-trophy mr-2 text-amber-400"></i> Leaderboards</button>
+        <button onclick="switchTab('frutas');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-apple-whole mr-2 text-rose-400"></i> Frutas</button>
+        <button onclick="switchTab('paises');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-globe mr-2 text-emerald-400"></i> Países</button>
+        <button onclick="switchTab('creadores');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-video mr-2 text-pink-400"></i> Creadores</button>
+        <button onclick="switchTab('torneos');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-swords mr-2 text-purple-400"></i> Torneos</button>
+        <button onclick="switchTab('reglas');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-gavel mr-2 text-red-400"></i> Reglas</button>
+        <button onclick="switchTab('banned');toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-slate-300"><i class="fa-solid fa-user-slash mr-2 text-rose-500"></i> Baneados</button>
+        <button onclick="copyDiscordLink();toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-sm font-semibold text-indigo-300 bg-indigo-950/60 border border-indigo-500/30"><i class="fa-brands fa-discord mr-2 text-indigo-400"></i> Copiar Invite Discord</button>
+    </div>
+</header>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+<!-- ============ INICIO ============ -->
+<section id="section-inicio" class="space-y-12 animate-fade-in">
+    <div class="relative overflow-hidden rounded-3xl border border-slate-700/80 p-8 sm:p-12 text-center sm:text-left shadow-2xl"
+         style="background: linear-gradient(135deg, rgba(2,10,30,.75), rgba(6,20,60,.85)), var(--bg-image) center/cover no-repeat;">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-8 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Servidor Oficial Blox Fruits Globally Player
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Blox Fruits Globally <br>
+                    <span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-amber-300 bg-clip-text text-transparent glow-title">Player</span>
+                </h1>
+                <p class="text-slate-200 text-base sm:text-lg max-w-2xl leading-relaxed">Bienvenido al portal oficial de competencias. Rankings por región, top de cada fruta, países y creadores destacados.</p>
+                <div class="flex flex-wrap gap-4 pt-2 justify-center sm:justify-start">
+                    <button onclick="switchTab('leaderboards')" class="px-6 py-3.5 rounded-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 shadow-lg shadow-cyan-500/25 transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fa-solid fa-ranking-star"></i> Ver Leaderboards</button>
+                    <button onclick="switchTab('frutas')" class="px-6 py-3.5 rounded-xl font-bold bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-600/30 transition transform hover:-translate-y-1 flex items-center gap-2"><i class="fa-solid fa-apple-whole"></i> Top Frutas</button>
+                </div>
+            </div>
+            <div class="md:col-span-4 flex justify-center">
+                <div class="relative group w-full max-w-xs animate-float">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-amber-500 via-cyan-500 to-purple-600 rounded-3xl blur-xl opacity-40 group-hover:opacity-70 transition duration-500"></div>
+                    <div class="relative bg-slate-900/90 border border-amber-500/40 p-6 rounded-3xl text-center space-y-4 shadow-2xl backdrop-blur-md">
+                        <div id="kingAvatar" class="w-20 h-20 mx-auto rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-4xl text-amber-400 glow-gold overflow-hidden">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-extrabold uppercase text-amber-400 tracking-wider bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">Rey PvP Actual</span>
+                            <h3 class="text-2xl font-black text-white mt-3" id="topGlobalHeroName">Ryuk</h3>
+                            <p class="text-xs text-slate-400 mt-2" id="topGlobalHeroCrew">Crew: Sanguine</p>
+                        </div>
+                        <button id="editKingBtn" onclick="openEditKingModal()" class="hidden w-full py-2 rounded-xl text-xs font-bold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition flex items-center justify-center gap-2"><i class="fa-solid fa-pen-to-square"></i> Editar Rey del Mar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="text-2xl font-extrabold text-white flex items-center gap-2 mb-6"><i class="fa-solid fa-compass text-cyan-400"></i> Explora las clasificaciones</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div onclick="selectLeaderboard('global')" class="card-hover bg-slate-900/80 border border-cyan-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl group-hover:bg-cyan-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-cyan-400 transition">Global</h3>
+                <p class="text-slate-400 text-xs">Los mejores de todos los mares.</p>
+            </div>
+            <div onclick="selectLeaderboard('na')" class="card-hover bg-slate-900/80 border border-purple-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.05s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl group-hover:bg-purple-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-flag-usa"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-purple-400 transition">NA</h3>
+                <p class="text-slate-400 text-xs">Norteamérica. PvP técnico.</p>
+            </div>
+            <div onclick="selectLeaderboard('sa')" class="card-hover bg-slate-900/80 border border-emerald-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.1s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl group-hover:bg-emerald-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-location-dot"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-emerald-400 transition">SA</h3>
+                <p class="text-slate-400 text-xs">Sudamérica. Combos letales.</p>
+            </div>
+            <div onclick="selectLeaderboard('eu')" class="card-hover bg-slate-900/80 border border-indigo-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.15s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl group-hover:bg-indigo-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-euro-sign"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-indigo-400 transition">EU</h3>
+                <p class="text-slate-400 text-xs">La división europea.</p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <div onclick="selectLeaderboard('pc')" class="card-hover bg-slate-900/80 border border-sky-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-sky-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-2xl group-hover:bg-sky-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-desktop"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-sky-400 transition">PC</h3>
+                <p class="text-slate-400 text-xs">Maestros del teclado.</p>
+            </div>
+            <div onclick="selectLeaderboard('movil')" class="card-hover bg-slate-900/80 border border-fuchsia-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.05s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-fuchsia-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center text-2xl group-hover:bg-fuchsia-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-fuchsia-400 transition">Móvil</h3>
+                <p class="text-slate-400 text-xs">La nueva generación táctil.</p>
+            </div>
+            <div onclick="selectLeaderboard('consola')" class="card-hover bg-slate-900/80 border border-amber-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.1s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl group-hover:bg-amber-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-gamepad"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-amber-400 transition">Consola</h3>
+                <p class="text-slate-400 text-xs">PlayStation y Xbox.</p>
+            </div>
+            <div onclick="switchTab('frutas')" class="card-hover bg-slate-900/80 border border-rose-500/30 rounded-2xl p-6 cursor-pointer group relative overflow-hidden animate-fade-up backdrop-blur-sm" style="animation-delay:.15s">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-rose-500/10 rounded-bl-full"></div>
+                <div class="w-12 h-12 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-2xl group-hover:bg-rose-500 group-hover:text-black transition mb-4"><i class="fa-solid fa-apple-whole"></i></div>
+                <h3 class="text-xl font-bold text-white mb-1 group-hover:text-rose-400 transition">Frutas</h3>
+                <p class="text-slate-400 text-xs">Top de jugadores por fruta.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-indigo-950/90 via-slate-900/90 to-indigo-950/90 border border-indigo-500/40 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl backdrop-blur-sm">
+        <div class="flex items-center gap-4 text-center md:text-left">
+            <div class="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-3xl text-indigo-400 shrink-0"><i class="fa-brands fa-discord"></i></div>
+            <div>
+                <h3 class="text-xl font-bold text-white">Comunidad Oficial de Discord</h3>
+                <p class="text-slate-300 text-xs mt-1">Únete para retar a otros tops, organizar scrims y participar en torneos.</p>
+                <p class="text-xs font-mono text-indigo-300 mt-2 bg-indigo-950/80 px-3 py-1 rounded-lg border border-indigo-500/30 inline-block" id="displayDiscordLink">https://discord.gg/g4HxzXfhd</p>
+            </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+            <button onclick="copyDiscordLink()" class="px-5 py-3 rounded-xl font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg transition flex items-center justify-center gap-2"><i class="fa-solid fa-copy"></i> Copiar Enlace</button>
+            <button id="editDiscordBtn" onclick="openEditDiscordModal()" class="hidden px-4 py-3 rounded-xl font-bold bg-indigo-950 border border-indigo-500/40 hover:bg-indigo-900/60 text-indigo-300 text-xs transition flex items-center justify-center gap-2"><i class="fa-solid fa-pen"></i> Editar Invite</button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ LEADERBOARDS ============ -->
+<section id="section-leaderboards" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div>
+            <h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-trophy text-amber-400"></i> Tabla de Clasificación</h2>
+            <p class="text-slate-400 text-sm mt-1">Top 20 por región y plataforma. Haz clic en un jugador para ver su perfil.</p>
+        </div>
+        <div id="adminPlayerControls" class="hidden">
+            <button onclick="openAddPlayerModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-user-plus"></i> Agregar Jugador</button>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-2">
+        <button onclick="switchBoardTab('global')" id="boardTab-global" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300"><i class="fa-solid fa-earth-americas"></i> Global</button>
+        <button onclick="switchBoardTab('na')" id="boardTab-na" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-flag-usa"></i> NA</button>
+        <button onclick="switchBoardTab('sa')" id="boardTab-sa" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-location-dot"></i> SA</button>
+        <button onclick="switchBoardTab('eu')" id="boardTab-eu" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-euro-sign"></i> EU</button>
+        <button onclick="switchBoardTab('pc')" id="boardTab-pc" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-desktop"></i> PC</button>
+        <button onclick="switchBoardTab('movil')" id="boardTab-movil" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-mobile-screen-button"></i> Móvil</button>
+        <button onclick="switchBoardTab('consola')" id="boardTab-consola" class="board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-gamepad"></i> Consola</button>
+    </div>
+
+    <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+        <input type="text" id="playerSearchInput" onkeyup="filterLeaderboard()" placeholder="Buscar jugador por nombre, fruit o crew..." class="w-full bg-slate-900/80 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition backdrop-blur-sm">
+    </div>
+
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-xl backdrop-blur-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-300">
+                <thead class="bg-slate-950/90 text-slate-400 uppercase text-xs font-bold border-b border-slate-800">
+                    <tr>
+                        <th class="px-6 py-4">Top</th>
+                        <th class="px-6 py-4">Jugador</th>
+                        <th class="px-6 py-4">Crew</th>
+                        <th class="px-6 py-4">Fruit</th>
+                        <th class="px-6 py-4 text-center">Tier</th>
+                        <th class="px-6 py-4 text-center">Región</th>
+                        <th class="px-6 py-4 text-center">Redes</th>
+                        <th class="px-6 py-4 text-center admin-col hidden">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboardTableBody" class="divide-y divide-slate-800/60"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TOP FRUTAS ============ -->
+<section id="section-frutas" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div>
+            <h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-apple-whole text-rose-400"></i> Frutas</h2>
+            <p class="text-slate-400 text-sm mt-1">Haz clic en cualquier fruta para ver su Top de jugadores.</p>
+        </div>
+        <div id="adminFruitControls" class="hidden">
+            <button onclick="openAddFruitModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-400 hover:to-pink-500 text-white shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> Agregar Fruta</button>
+        </div>
+    </div>
+    <div id="fruitGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+</section>
+
+<!-- ============ TOP PAÍSES ============ -->
+<section id="section-paises" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div>
+            <h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-globe text-teal-400"></i> Ranking de Países</h2>
+            <p class="text-slate-400 text-sm mt-1">Haz clic en un país para ver sus jugadores top.</p>
+        </div>
+        <div id="adminCountryControls" class="hidden">
+            <button onclick="openAddCountryModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-400 hover:to-emerald-500 text-slate-950 shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> Agregar País</button>
+        </div>
+    </div>
+    <div id="countryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+</section>
+
+<!-- ============ CREADORES ============ -->
+<section id="section-creadores" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div>
+            <h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-video text-pink-400"></i> Top Creadores de Contenido</h2>
+            <p class="text-slate-400 text-sm mt-1">YouTubers, TikTokers y streamers destacados por región.</p>
+        </div>
+        <div id="adminCreatorControls" class="hidden">
+            <button onclick="openAddCreatorModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-pink-500 to-fuchsia-600 hover:from-pink-400 hover:to-fuchsia-500 text-white shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> Agregar Creador</button>
+        </div>
+    </div>
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-2">
+        <button onclick="switchCreatorRegion('global')" id="creatorTab-global" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-pink-500/20 border border-pink-500/40 text-pink-300"><i class="fa-solid fa-earth-americas"></i> Global</button>
+        <button onclick="switchCreatorRegion('na')" id="creatorTab-na" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-flag-usa"></i> NA</button>
+        <button onclick="switchCreatorRegion('sa')" id="creatorTab-sa" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-location-dot"></i> SA</button>
+        <button onclick="switchCreatorRegion('eu')" id="creatorTab-eu" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-euro-sign"></i> EU</button>
+        <button onclick="switchCreatorRegion('pc')" id="creatorTab-pc" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-desktop"></i> PC</button>
+        <button onclick="switchCreatorRegion('movil')" id="creatorTab-movil" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-mobile-screen-button"></i> Móvil</button>
+        <button onclick="switchCreatorRegion('consola')" id="creatorTab-consola" class="creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"><i class="fa-solid fa-gamepad"></i> Consola</button>
+    </div>
+    <div id="creatorsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- ============ TORNEOS ============ -->
+<section id="section-torneos" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div><h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-swords text-purple-400"></i> Torneos Competitivos</h2></div>
+        <div id="adminTournamentControls" class="hidden">
+            <button onclick="openAddTournamentModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> Programar Torneo</button>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="tournamentsList"></div>
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-6 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-white flex items-center gap-2"><i class="fa-solid fa-medal text-amber-400"></i> Ganadores anteriores</h3>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-300">
+                <thead class="bg-slate-950/90 text-slate-400 uppercase text-xs font-bold border-b border-slate-800">
+                    <tr><th class="px-4 py-3">Torneo</th><th class="px-4 py-3">Fecha</th><th class="px-4 py-3">Campeón</th><th class="px-4 py-3">Premio</th></tr>
+                </thead>
+                <tbody id="winnersTableBody" class="divide-y divide-slate-800/60"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ============ REGLAS ============ -->
+<section id="section-reglas" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div><h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-gavel text-red-400"></i> Reglas Oficiales</h2></div>
+        <div id="adminRulesControls" class="hidden">
+            <button onclick="openAddRuleModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-plus-circle"></i> Agregar Regla</button>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="rulesList"></div>
+</section>
+
+<!-- ============ BANEADOS ============ -->
+<section id="section-banned" class="hidden space-y-8 animate-fade-in">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/80 border border-slate-800 p-6 rounded-2xl backdrop-blur-sm">
+        <div><h2 class="text-2xl font-black text-white flex items-center gap-3"><i class="fa-solid fa-user-slash text-rose-500"></i> Jugadores Baneados</h2></div>
+        <div id="adminBannedControls" class="hidden">
+            <button onclick="openAddBannedModal()" class="px-4 py-2.5 rounded-xl font-bold text-sm bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white shadow-lg transition flex items-center gap-2"><i class="fa-solid fa-user-xmark"></i> Agregar Baneado</button>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bannedList"></div>
+</section>
+
+</main>
+
+<footer class="border-t border-slate-800/80 bg-slate-950/90 py-8 mt-12 text-slate-500 text-xs text-center backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+        <p class="font-bold text-slate-400">Blox Fruits Globally Player © 2026 — Comunidad PvP Competitiva</p>
+        <p>Este sitio no está afiliado con Roblox Corporation ni Gamer Robot Inc.</p>
+    </div>
+</footer>
+
+<!-- ============ MODAL: PERFIL ============ -->
+<div id="profileModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeProfileModal()" class="absolute top-4 right-4 z-10 bg-slate-950/80 rounded-full text-slate-300 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div id="profileContent"></div>
+    </div>
+</div>
+
+<!-- ============ MODAL: TOP FRUTA ============ -->
+<div id="fruitTopModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeFruitTopModal()" class="absolute top-4 right-4 z-10 bg-slate-950/80 rounded-full text-slate-300 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div id="fruitTopContent" class="max-h-[80vh] overflow-y-auto modal-scroll-lock"></div>
+    </div>
+</div>
+
+<!-- ============ MODAL: TOP PAÍS ============ -->
+<div id="countryTopModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeCountryTopModal()" class="absolute top-4 right-4 z-10 bg-slate-950/80 rounded-full text-slate-300 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div id="countryTopContent" class="max-h-[80vh] overflow-y-auto modal-scroll-lock"></div>
+    </div>
+</div>
+
+<!-- ============ MODAL: LOGIN ADMIN ============ -->
+<div id="adminLoginModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative animate-pop">
+        <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div class="text-center space-y-2">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-3xl text-red-500"><i class="fa-solid fa-user-shield"></i></div>
+            <h3 class="text-2xl font-black text-white">Acceso Modo Admin</h3>
+        </div>
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Contraseña</label>
+                <input type="password" id="adminPasswordInput" placeholder="••••••••••••••" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white">
+            </div>
+            <div id="loginErrorMsg" class="hidden text-xs text-red-400 bg-red-500/10 border border-red-500/20 p-3 rounded-xl text-center">Contraseña incorrecta.</div>
+            <button type="submit" class="w-full py-3.5 rounded-xl font-bold bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white shadow-lg transition">Verificar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: JUGADOR ============ -->
+<div id="playerModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closePlayerModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="playerModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-user-plus text-cyan-400"></i> Agregar Jugador</h3></div>
+        <form onsubmit="savePlayer(event)" class="space-y-4">
+            <input type="hidden" id="editPlayerIndex" value="-1">
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="playerName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Crew</label><input type="text" id="playerCrew" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Fruit</label><select id="playerFruit" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></select></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Tier</label>
+                    <select id="playerTier" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="1">Tier 1 (Mejor)</option>
+                        <option value="2">Tier 2</option>
+                        <option value="3">Tier 3</option>
+                        <option value="4">Tier 4</option>
+                        <option value="5">Tier 5</option>
+                        <option value="6">Tier 6 (Peor)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Región/Plataforma</label>
+                    <select id="playerBoardCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="global">Global</option><option value="na">NA</option><option value="sa">SA</option>
+                        <option value="eu">EU</option><option value="pc">PC</option><option value="movil">Móvil</option><option value="consola">Consola</option>
+                    </select>
+                </div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">País</label>
+                    <select id="playerCountry" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Melee</label><input type="text" id="playerMelee" placeholder="Sanguine Art" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Sword</label><input type="text" id="playerSword" placeholder="True Triple Katana" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Gun</label><input type="text" id="playerGun" placeholder="Soul Guitar" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Raza</label>
+                    <select id="playerRace" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="Human">Human</option><option value="Skypiea">Skypiea</option>
+                        <option value="Fishman">Fishman</option><option value="Mink">Mink</option>
+                        <option value="Cyborg">Cyborg</option><option value="Ghoul">Ghoul</option><option value="Draco">Draco</option>
+                    </select>
+                </div>
+            </div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Discord ID (para foto real)</label><input type="text" id="playerDiscordId" placeholder="1332058960441638964" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div class="grid grid-cols-3 gap-3">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Discord</label><input type="text" id="playerDiscord" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">YouTube</label><input type="text" id="playerYoutube" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">TikTok</label><input type="text" id="playerTiktok" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg transition">Guardar Jugador</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: FRUTA ============ -->
+<div id="fruitModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeFruitModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="fruitModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-apple-whole text-rose-400"></i> Fruta</h3></div>
+        <form onsubmit="saveFruit(event)" class="space-y-4">
+            <input type="hidden" id="editFruitIndex" value="-1">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="fruitName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Usos</label><input type="number" id="fruitUses" min="0" value="0" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">URL de imagen</label><input type="text" id="fruitImage" placeholder="https://i.imgur.com/xxx.png" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Descripción</label><textarea id="fruitDesc" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></textarea></div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-rose-600 hover:bg-rose-500 text-white shadow-lg transition">Guardar Fruta</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: PAÍS ============ -->
+<div id="countryModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeCountryModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="countryModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-globe text-teal-400"></i> País</h3></div>
+        <form onsubmit="saveCountry(event)" class="space-y-4">
+            <input type="hidden" id="editCountryIndex" value="-1">
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Código ISO</label><input type="text" id="countryFlag" required placeholder="jp" maxlength="2" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-center text-2xl"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">País</label><input type="text" id="countryName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Jugadores Top</label><input type="number" id="countryPlayers" min="0" value="0" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Puntos</label><input type="number" id="countryPoints" min="0" value="0" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-teal-600 hover:bg-teal-500 text-slate-950 shadow-lg transition">Guardar País</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: CREADOR ============ -->
+<div id="creatorModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeCreatorModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="creatorModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-video text-pink-400"></i> Creador</h3></div>
+        <form onsubmit="saveCreator(event)" class="space-y-4">
+            <input type="hidden" id="editCreatorIndex" value="-1">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="creatorName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Plataforma</label>
+                    <select id="creatorPlatform" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="twitch">Twitch</option>
+                    </select>
+                </div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Región</label>
+                    <select id="creatorRegion" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="global">Global</option><option value="na">NA</option><option value="sa">SA</option>
+                        <option value="eu">EU</option><option value="pc">PC</option><option value="movil">Móvil</option><option value="consola">Consola</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Seguidores</label><input type="text" id="creatorFollowers" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Especialidad</label><input type="text" id="creatorSpecialty" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            </div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Discord ID</label><input type="text" id="creatorDiscordId" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div class="grid grid-cols-3 gap-3">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Discord</label><input type="text" id="creatorDiscord" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">YouTube</label><input type="text" id="creatorYoutube" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">TikTok</label><input type="text" id="creatorTiktok" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white text-xs"></div>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-pink-600 hover:bg-pink-500 text-white shadow-lg transition">Guardar Creador</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: TORNEO ============ -->
+<div id="tournamentModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeTournamentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="tournModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-trophy text-purple-400"></i> Torneo</h3></div>
+        <form onsubmit="saveTournament(event)" class="space-y-4">
+            <input type="hidden" id="editTournIndex" value="-1">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="tournName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Fecha</label><input type="date" id="tournDate" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Estado</label>
+                    <select id="tournStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="Próximo">Próximo</option><option value="En Curso 🟢">En Curso 🟢</option><option value="Finalizado 🏆">Finalizado 🏆</option>
+                    </select>
+                </div>
+            </div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Premio</label><input type="text" id="tournPrize" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Ganador</label><input type="text" id="tournWinner" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-purple-600 hover:bg-purple-500 text-white shadow-lg transition">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: REY ============ -->
+<div id="kingModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative animate-pop">
+        <button onclick="closeEditKingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 class="text-2xl font-black text-amber-400 flex items-center gap-2"><i class="fa-solid fa-crown"></i> Rey del Mar</h3></div>
+        <form onsubmit="saveCustomKing(event)" class="space-y-4">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="kingName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Crew</label><input type="text" id="kingCrew" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Discord ID</label><input type="text" id="kingDiscordId" placeholder="1332058960441638964" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg transition">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: DISCORD ============ -->
+<div id="discordModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-2xl relative animate-pop">
+        <button onclick="closeEditDiscordModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 class="text-2xl font-black text-indigo-400 flex items-center gap-2"><i class="fa-brands fa-discord"></i> Discord</h3></div>
+        <form onsubmit="saveDiscordLink(event)" class="space-y-4">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">URL</label><input type="text" id="discordInput" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg transition">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: REGLA ============ -->
+<div id="ruleModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeRuleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="ruleModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-gavel text-red-400"></i> Regla</h3></div>
+        <form onsubmit="saveRule(event)" class="space-y-4">
+            <input type="hidden" id="editRuleIndex" value="-1">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Título</label><input type="text" id="ruleTitle" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Descripción</label><textarea id="ruleDesc" required rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></textarea></div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Categoría</label><input type="text" id="ruleCategory" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Color</label>
+                    <select id="ruleColor" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="red">Rojo</option><option value="amber">Amarillo</option>
+                        <option value="cyan">Cian</option><option value="emerald">Verde</option><option value="purple">Púrpura</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-red-600 hover:bg-red-500 text-white shadow-lg transition">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ MODAL: BANEADO ============ -->
+<div id="bannedModal" class="modal-overlay fixed inset-0 bg-black/80 backdrop-blur-sm z-[55] hidden">
+    <div class="modal-content bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-lg w-full space-y-6 shadow-2xl relative my-8 animate-pop">
+        <button onclick="closeBannedModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+        <div><h3 id="bannedModalTitle" class="text-2xl font-black text-white flex items-center gap-2"><i class="fa-solid fa-user-slash text-rose-500"></i> Baneado</h3></div>
+        <form onsubmit="saveBannedPlayer(event)" class="space-y-4">
+            <input type="hidden" id="editBannedIndex" value="-1">
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Nombre</label><input type="text" id="bannedName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Crew</label><input type="text" id="bannedCrew" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+                <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Estado</label>
+                    <select id="bannedStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white">
+                        <option value="Ban Permanente 🚫">Ban Permanente 🚫</option>
+                        <option value="Ban Temporal (30 Días) ⏳">Ban Temporal (30 Días) ⏳</option>
+                        <option value="Descalificado de Torneo ❌">Descalificado de Torneo ❌</option>
+                    </select>
+                </div>
+            </div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Razón</label><textarea id="bannedReason" required rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></textarea></div>
+            <div><label class="block text-xs font-bold text-slate-400 uppercase mb-1">Fecha</label><input type="date" id="bannedDate" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white"></div>
+            <button type="submit" class="w-full py-3 rounded-xl font-bold bg-rose-600 hover:bg-rose-500 text-white shadow-lg transition">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ SCRIPT ============ -->
+<script type="module">
+/* =========================================================
+   FIREBASE (opcional)
+   ========================================================= */
+let firebaseReady = false, app, auth, db;
+let signInAnonymously, signInWithCustomToken, doc, setDoc, onSnapshot;
+
+try {
+    const fbApp  = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+    const fbAuth = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+    const fbFs   = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+    const firebaseConfig = typeof __firebase_config !== 'undefined'
+        ? JSON.parse(__firebase_config)
+        : { apiKey:"AIzaSyDemoKeyForBloxFruitsPlayera", authDomain:"bloxfruits-playera.firebaseapp.com",
+            projectId:"bloxfruits-playera", storageBucket:"bloxfruits-playera.appspot.com",
+            messagingSenderId:"123456789", appId:"1:123456789:web:abcdef123456" };
+    app  = fbApp.initializeApp(firebaseConfig);
+    auth = fbAuth.getAuth(app);
+    db   = fbFs.getFirestore(app);
+    signInAnonymously     = fbAuth.signInAnonymously;
+    signInWithCustomToken = fbAuth.signInWithCustomToken;
+    doc = fbFs.doc; setDoc = fbFs.setDoc; onSnapshot = fbFs.onSnapshot;
+    firebaseReady = true;
+} catch (e) { console.warn("Firebase no disponible — modo offline."); }
+
+/* =========================================================
+   LISTA DE FRUTAS + IMÁGENES
+   ========================================================= */
+const FRUIT_LIST = ["Kitsune","Dragon","Magnet","Sound","Portal","T-Rex","Control","Tiger","Rumble","Dough","Leopard","Buddha","Venom","Ice"];
+
+const FRUIT_IMAGES = {
+    "Kitsune": "https://i.imgur.com/GGJSoUI.png",
+    "Dragon":  "https://i.imgur.com/o8ORzOz.png",
+    "Magnet":  "https://i.imgur.com/hF8y21X.png",
+    "Sound":   "https://i.imgur.com/9drZwzQ.png",
+    "Portal":  "https://i.imgur.com/3uk9Ntv.png",
+    "T-Rex":   "https://i.imgur.com/3IN7BAh.png",
+    "Control": "https://i.imgur.com/8hD7hoZ.png",
+    "Tiger":   "https://i.imgur.com/vZlTNa1.png",
+    "Rumble":  "https://i.imgur.com/WwOs03L.png",
+    "Dough":   "",
+    "Leopard": "",
+    "Buddha":  "",
+    "Venom":   "",
+    "Ice":     ""
+};
+
+/* =========================================================
+   PAÍSES → CÓDIGO ISO
+   ========================================================= */
+const COUNTRY_TO_ISO = {
+    "Argentina": "ar", "Brasil": "br", "Canadá": "ca", "Chile": "cl",
+    "China": "cn", "Colombia": "co", "Corea": "kr", "Costa Rica": "cr",
+    "Cuba": "cu", "Ecuador": "ec", "Alemania": "de", "España": "es",
+    "Estados Unidos": "us", "EE.UU.": "us", "USA": "us", "Francia": "fr",
+    "India": "in", "Italia": "it", "Japón": "jp", "México": "mx",
+    "Panamá": "pa", "Paraguay": "py", "Perú": "pe", "Portugal": "pt",
+    "Reino Unido": "gb", "Rusia": "ru", "Turquía": "tr", "Uruguay": "uy",
+    "Venezuela": "ve", "Bolivia": "bo", "Honduras": "hn", "Guatemala": "gt",
+    "Nicaragua": "ni", "República Dominicana": "do", "El Salvador": "sv",
+    "Puerto Rico": "pr", "Australia": "au", "Indonesia": "id",
+    "Filipinas": "ph", "Tailandia": "th", "Vietnam": "vn"
+};
+const COUNTRY_OPTIONS = Object.keys(COUNTRY_TO_ISO).sort();
+
+function tierLabel(t) {
+    const n = parseInt(t) || 6;
+    return `<span class="tier-badge tier-${n}">TIER ${n}</span>`;
+}
+
+/* =========================================================
+   DATOS POR DEFECTO
+   ========================================================= */
+const DEFAULT_LEADERBOARDS = {
+    global: [
+        { name:"Ryuk", crew:"Sanguine", fruit:"Portal", country:"Japón", tier:1, region:"global", melee:"Sanguine Art", sword:"True Triple Katana", gun:"Soul Guitar", race:"Cyborg", discordId:"1332058960441638964", discord:"ryuk", youtube:"", tiktok:"" },
+        { name:"Fer999_PvP", crew:"Kings of the Sea", fruit:"Kitsune", country:"México", tier:2, region:"global", melee:"Dragon Talon", sword:"Dark Blade", gun:"Soul Guitar", race:"Draco", discord:"fer999", youtube:"@fer999pvp", tiktok:"@fer999_pvp" },
+        { name:"Rip_Indra_Fan", crew:"Admin Marines", fruit:"Dragon", country:"Estados Unidos", tier:2, region:"global", melee:"Godhuman", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Cyborg", discord:"ripindra", youtube:"@ripindra", tiktok:"" },
+        { name:"Zioles_Lover", crew:"Blox Official", fruit:"Dough", country:"España", tier:3, region:"global", melee:"Electric Claw", sword:"True Triple Katana", gun:"Acidum Rifle", race:"Human", discord:"zioles", youtube:"@zioleslover", tiktok:"@zioles" },
+        { name:"DarkBlade_God", crew:"Swordsmen Realm", fruit:"Portal", country:"Argentina", tier:3, region:"global", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Mink", discord:"darkblade", youtube:"", tiktok:"@darkblade" }
+    ],
+    na: [
+        { name:"NA_PvP_God", crew:"US Warriors", fruit:"Kitsune", country:"Estados Unidos", tier:1, region:"na", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Cyborg", discord:"napvpgod", youtube:"@napvpgod", tiktok:"@napvpgod" },
+        { name:"EastCoast_Demon", crew:"New York Pirates", fruit:"Dragon", country:"Estados Unidos", tier:2, region:"na", melee:"Dragon Talon", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Draco", discord:"eastcoast", youtube:"", tiktok:"@eastcoast" },
+        { name:"WestCoast_King", crew:"California Crew", fruit:"Portal", country:"Estados Unidos", tier:3, region:"na", melee:"Electric Claw", sword:"True Triple Katana", gun:"Acidum Rifle", race:"Human", discord:"westcoast", youtube:"@westcoast", tiktok:"" },
+        { name:"Canada_Sniper", crew:"Maple Squad", fruit:"Magnet", country:"Canadá", tier:4, region:"na", melee:"Superhuman", sword:"Yama", gun:"Bizarre Rifle", race:"Mink", discord:"canadasniper", youtube:"", tiktok:"" }
+    ],
+    sa: [
+        { name:"Ryuk", crew:"Sanguine", fruit:"Portal", country:"Japón", tier:1, region:"sa", melee:"Sanguine Art", sword:"True Triple Katana", gun:"Soul Guitar", race:"Cyborg", discordId:"1332058960441638964", discord:"ryuk", youtube:"", tiktok:"" },
+        { name:"Brasil_PvP_Rei", crew:"Favela Pirates", fruit:"Dragon", country:"Brasil", tier:2, region:"sa", melee:"Godhuman", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Cyborg", discord:"brasilrei", youtube:"@brasilpvprei", tiktok:"@brasilrei" },
+        { name:"Arg_Master", crew:"Pampa Warriors", fruit:"T-Rex", country:"Argentina", tier:3, region:"sa", melee:"Dragon Talon", sword:"True Triple Katana", gun:"Acidum Rifle", race:"Human", discord:"argmaster", youtube:"", tiktok:"@argmaster" },
+        { name:"Chile_King", crew:"Andes Crew", fruit:"Portal", country:"Chile", tier:3, region:"sa", melee:"Electric Claw", sword:"Dark Blade", gun:"Soul Guitar", race:"Mink", discord:"chileking", youtube:"", tiktok:"" }
+    ],
+    eu: [
+        { name:"EU_Dragon_Slayer", crew:"Iberian Kings", fruit:"Dragon", country:"España", tier:1, region:"eu", melee:"Dragon Talon", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Draco", discord:"euslayer", youtube:"@euslayer", tiktok:"@euslayer" },
+        { name:"French_Combo", crew:"Paris Elite", fruit:"Kitsune", country:"Francia", tier:2, region:"eu", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Cyborg", discord:"frenchcombo", youtube:"", tiktok:"@frenchcombo" },
+        { name:"German_Sniper", crew:"Berlin Squad", fruit:"Sound", country:"Alemania", tier:3, region:"eu", melee:"Electric Claw", sword:"True Triple Katana", gun:"Acidum Rifle", race:"Mink", discord:"germansniper", youtube:"@germansniper", tiktok:"" },
+        { name:"Italian_King", crew:"Roma Warriors", fruit:"Control", country:"Italia", tier:4, region:"eu", melee:"Superhuman", sword:"Yama", gun:"Bizarre Rifle", race:"Human", discord:"italianking", youtube:"", tiktok:"@italianking" },
+        { name:"UK_PvP_Lord", crew:"London Crew", fruit:"Rumble", country:"Reino Unido", tier:2, region:"eu", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Mink", discord:"uklord", youtube:"@ukpvplord", tiktok:"" }
+    ],
+    pc: [
+        { name:"PC_Master_Race", crew:"Keyboard Kings", fruit:"Kitsune", country:"Estados Unidos", tier:1, region:"pc", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Cyborg", discord:"pcmaster", youtube:"", tiktok:"" },
+        { name:"FPS_God_144hz", crew:"High Refresh", fruit:"Dragon", country:"Corea", tier:2, region:"pc", melee:"Dragon Talon", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Draco", discord:"fpsgod", youtube:"", tiktok:"" }
+    ],
+    movil: [
+        { name:"Mobile_Legend", crew:"Touch Squad", fruit:"Portal", country:"Brasil", tier:1, region:"movil", melee:"Electric Claw", sword:"True Triple Katana", gun:"Acidum Rifle", race:"Human", discord:"mobilelegend", youtube:"@mobilelegend", tiktok:"@mobilelegend" },
+        { name:"Touch_King_YT", crew:"Screen Warriors", fruit:"Kitsune", country:"India", tier:2, region:"movil", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Cyborg", discord:"touchking", youtube:"@touchking", tiktok:"" }
+    ],
+    consola: [
+        { name:"ControllerGod_PS5", crew:"DualSense Elite", fruit:"Kitsune", country:"Estados Unidos", tier:1, region:"consola", melee:"Godhuman", sword:"Dark Blade", gun:"Soul Guitar", race:"Cyborg", discord:"controllergod", youtube:"", tiktok:"@controllergod" },
+        { name:"XboxSeriesX_PvP", crew:"Green Team", fruit:"Dragon", country:"Reino Unido", tier:2, region:"consola", melee:"Dragon Talon", sword:"Cursed Dual Katana", gun:"Kabucha", race:"Draco", discord:"xboxpvp", youtube:"@xboxpvp", tiktok:"" }
+    ]
+};
+
+const DEFAULT_FRUITS = [
+    { name:"Kitsune", uses:145, desc:"Fruta dominante del meta por su transformación y combo infinito." },
+    { name:"Dragon",  uses:132, desc:"Alto daño en área y movilidad aérea." },
+    { name:"Magnet",  uses:88,  desc:"Control de área y utilidad estratégica." },
+    { name:"Sound",   uses:76,  desc:"Combos rápidos y ataques a distancia." },
+    { name:"Portal",  uses:110, desc:"Movilidad superior y escapes rápidos." },
+    { name:"T-Rex",   uses:98,  desc:"Fuerza bruta y combos cuerpo a cuerpo." },
+    { name:"Control", uses:82,  desc:"Dominio del campo con trampas." },
+    { name:"Tiger",   uses:64,  desc:"Velocidad y daño explosivo." },
+    { name:"Rumble",  uses:70,  desc:"Ataques eléctricos rápidos con gran alcance." }
+];
+
+const DEFAULT_COUNTRIES = [
+    { code:"us", name:"Estados Unidos", players:18, points:42500 },
+    { code:"br", name:"Brasil",         players:15, points:38200 },
+    { code:"jp", name:"Japón",          players:9,  points:34100 },
+    { code:"mx", name:"México",         players:14, points:35800 },
+    { code:"es", name:"España",         players:12, points:31400 },
+    { code:"ar", name:"Argentina",      players:11, points:28900 },
+    { code:"gb", name:"Reino Unido",    players:9,  points:25100 },
+    { code:"cl", name:"Chile",          players:8,  points:22300 },
+    { code:"de", name:"Alemania",       players:7,  points:19800 },
+    { code:"co", name:"Colombia",       players:7,  points:18700 }
+];
+
+const DEFAULT_CREATORS = [
+    { name:"Rip_Indra", platform:"youtube", region:"global", followers:"2.5M", specialty:"Guías, PvP", discord:"ripindra", youtube:"@ripindra", tiktok:"" },
+    { name:"Zioles",    platform:"youtube", region:"global", followers:"1.9M", specialty:"Combos, Updates", discord:"zioles", youtube:"@zioles", tiktok:"@zioles_oficial" },
+    { name:"Ryuk",      platform:"youtube", region:"sa",     followers:"180K", specialty:"Portal Combos, Sanguine", discord:"ryuk", discordId:"1332058960441638964", youtube:"", tiktok:"" },
+    { name:"Brasil_PvP_Rei", platform:"tiktok", region:"sa", followers:"380K", specialty:"Combos, Clips", discord:"brasilrei", youtube:"@brasilpvprei", tiktok:"@brasilrei" },
+    { name:"EU_Dragon_Slayer", platform:"youtube", region:"eu", followers:"520K", specialty:"Dragon combos", discord:"euslayer", youtube:"@euslayer", tiktok:"@euslayer" },
+    { name:"NA_PvP_God", platform:"youtube", region:"na", followers:"890K", specialty:"PvP NA", discord:"napvpgod", youtube:"@napvpgod", tiktok:"@napvpgod" }
+];
+
+const DEFAULT_TOURNAMENTS = [
+    { id:1, name:"Copa Mar de Marinas 1v1", date:"2026-10-15", status:"En Curso 🟢", prize:"Perm Kitsune + 1,500 Robux", winner:"-" },
+    { id:2, name:"Torneo Supremo SA", date:"2026-11-01", status:"Próximo", prize:"Perm Dragon + Perm Dough", winner:"-" },
+    { id:3, name:"Mundial Blox Fruits Player", date:"2026-08-20", status:"Finalizado 🏆", prize:"Perm Kitsune + 3,000 Robux", winner:"Ryuk [Sanguine]" }
+];
+
+const DEFAULT_RULES = [
+    { title:"No Macros de ningún tipo", desc:"Prohibido el uso de macros para combos, movilidad o spam.", category:"Prohibición", color:"red", icon:"fa-ban" },
+    { title:"No fast flags", desc:"Prohibida cualquier modificación de archivos o fast flags de Roblox.", category:"Prohibición", color:"red", icon:"fa-bug" },
+    { title:"Prohibido el AHK", desc:"El uso de AutoHotkey (AHK) conlleva sanción y baneo directo.", category:"Prohibición", color:"red", icon:"fa-keyboard" },
+    { title:"Plazo de Desafío (2 días)", desc:"Si eres un top y recibes un reto, tienes máximo 2 días para jugar.", category:"Competencia", color:"amber", icon:"fa-clock" },
+    { title:"Límite de Desafíos", desc:"Solo puedes desafiar a personas hasta 5 puestos arriba de ti.", category:"Competencia", color:"cyan", icon:"fa-crosshairs" },
+    { title:"Sanción por trampas", desc:"Uso de macros, AHK o aimbot = BAN PERMANENTE.", category:"Sanción", color:"purple", icon:"fa-gavel" }
+];
+
+const DEFAULT_BANNED_PLAYERS = [
+    { name:"Hacker_PvP_xX", crew:"Shadow Pirates", reason:"Uso demostrado de AutoHotkey (AHK) y macro de combos.", date:"2026-09-10", status:"Ban Permanente 🚫" },
+    { name:"PortalRunner99", crew:"NoClan", reason:"Uso indebido de C y V de Portal de forma reincidente.", date:"2026-08-28", status:"Ban Temporal (30 días) ⏳" }
+];
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+const safeParse = (s, f) => { try { return s ? JSON.parse(s) : f; } catch { return f; } };
+
+let currentLeaderboards = safeParse(localStorage.getItem('bf_leaderboards'), DEFAULT_LEADERBOARDS);
+let currentFruits       = safeParse(localStorage.getItem('bf_fruits'),       DEFAULT_FRUITS);
+let currentCountries    = safeParse(localStorage.getItem('bf_countries'),    DEFAULT_COUNTRIES);
+let currentCreators     = safeParse(localStorage.getItem('bf_creators'),     DEFAULT_CREATORS);
+let currentTournaments  = safeParse(localStorage.getItem('bf_tournaments'),  DEFAULT_TOURNAMENTS);
+let currentRules        = safeParse(localStorage.getItem('bf_rules'),        DEFAULT_RULES);
+let currentBanned       = safeParse(localStorage.getItem('bf_banned'),       DEFAULT_BANNED_PLAYERS);
+let customKing          = safeParse(localStorage.getItem('bf_king'),         { name:"Ryuk", crew:"Sanguine", discordId:"1332058960441638964" });
+let discordLink         = localStorage.getItem('bf_discord') || "https://discord.gg/g4HxzXfhd";
+let currentTheme        = localStorage.getItem('bf_theme') || 'normal';
+
+let activeBoardTab   = 'global';
+let activeCreatorTab = 'global';
+let isAdminLoggedIn  = false;
+const ADMIN_PASSWORD_REQUIRED = "108967purotopALV";
+const discordAvatarCache = {};
+
+window.setTheme = function(theme) {
+    document.documentElement.classList.remove('theme-light','theme-dark','theme-normal');
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.add(`theme-${theme}`);
+    if (theme === 'dark' || theme === 'normal') document.documentElement.classList.add('dark');
+    currentTheme = theme;
+    localStorage.setItem('bf_theme', theme);
+    ['light','normal','dark'].forEach(t => {
+        const btn = document.getElementById(`themeBtn-${t}`);
+        if (btn) btn.classList.toggle('active', t === theme);
+    });
+};
+
+function flagImg(countryName, size = 40) {
+    const iso = COUNTRY_TO_ISO[countryName];
+    if (!iso) return `<span class="text-xs text-slate-500">🏳️</span>`;
+    return `<img src="https://flagcdn.com/w${size}/${iso}.png" srcset="https://flagcdn.com/w${size*2}/${iso}.png 2x" alt="${escapeHtml(countryName)}" class="flag-img" onerror="this.replaceWith(document.createTextNode('🏳️'))">`;
+}
+
+async function fetchDiscordAvatar(discordId) {
+    if (!discordId) return null;
+    if (discordAvatarCache[discordId]) return discordAvatarCache[discordId];
+    try {
+        const res = await fetch(`https://api.lanyard.rest/v1/users/${discordId}`);
+        if (!res.ok) throw new Error("Lanyard error");
+        const json = await res.json();
+        if (!json.success) throw new Error("No data");
+        const d = json.data.discord_user;
+        const avatar = d.avatar
+            ? `https://cdn.discordapp.com/avatars/${d.id}/${d.avatar}.${d.avatar.startsWith('a_') ? 'gif' : 'png'}?size=512`
+            : `https://cdn.discordapp.com/embed/avatars/0.png`;
+        const result = { avatar, username: d.username, global_name: d.global_name };
+        discordAvatarCache[discordId] = result;
+        return result;
+    } catch (e) { console.warn("Avatar Discord no disponible:", e); return null; }
+}
+
+async function extractDominantColor(imgUrl) {
+    return new Promise((resolve) => {
+        if (!imgUrl) return resolve('#1e293b');
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const size = 40;
+                canvas.width = size; canvas.height = size;
+                ctx.drawImage(img, 0, 0, size, size);
+                const data = ctx.getImageData(0, 0, size, size).data;
+                let r=0,g=0,b=0,c=0;
+                for (let i=0;i<data.length;i+=16){ r+=data[i];g+=data[i+1];b+=data[i+2];c++; }
+                r=Math.min(255,Math.floor((r/c)*1.15));
+                g=Math.min(255,Math.floor((g/c)*1.15));
+                b=Math.min(255,Math.floor((b/c)*1.15));
+                resolve(`rgb(${r},${g},${b})`);
+            } catch { resolve('#1e293b'); }
+        };
+        img.onerror = () => resolve('#1e293b');
+        img.src = imgUrl;
+    });
+}
+
+async function setupFirestoreSync() {
+    if (!firebaseReady || !auth) return;
+    try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token);
+        else await signInAnonymously(auth);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'bloxfruits-globally-player-v7';
+        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'appState', 'dataDoc');
+        onSnapshot(docRef, (snap) => {
+            if (!snap.exists()) return;
+            const d = snap.data();
+            if (d.leaderboards) currentLeaderboards = d.leaderboards;
+            if (d.fruits)       currentFruits       = d.fruits;
+            if (d.countries)    currentCountries    = d.countries;
+            if (d.creators)     currentCreators     = d.creators;
+            if (d.tournaments)  currentTournaments  = d.tournaments;
+            if (d.rules)        currentRules        = d.rules;
+            if (d.banned)       currentBanned       = d.banned;
+            if (d.king !== undefined) customKing    = d.king;
+            if (d.discord)      discordLink         = d.discord;
+            saveToLocalStorage(false); renderAllUI();
+        }, (err) => console.warn("Firestore:", err));
+    } catch (err) { console.warn("Auth offline:", err); }
+}
+
+async function syncToCloud() {
+    saveToLocalStorage(false);
+    if (!firebaseReady || !auth || !auth.currentUser) return;
+    try {
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'bloxfruits-globally-player-v7';
+        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'appState', 'dataDoc');
+        await setDoc(docRef, {
+            leaderboards: currentLeaderboards, fruits: currentFruits, countries: currentCountries,
+            creators: currentCreators, tournaments: currentTournaments, rules: currentRules,
+            banned: currentBanned, king: customKing, discord: discordLink, updatedAt: Date.now()
+        });
+    } catch (err) { console.error("Cloud save:", err); }
+}
+
+function saveToLocalStorage(triggerCloud = true) {
+    localStorage.setItem('bf_leaderboards', JSON.stringify(currentLeaderboards));
+    localStorage.setItem('bf_fruits',       JSON.stringify(currentFruits));
+    localStorage.setItem('bf_countries',    JSON.stringify(currentCountries));
+    localStorage.setItem('bf_creators',     JSON.stringify(currentCreators));
+    localStorage.setItem('bf_tournaments',  JSON.stringify(currentTournaments));
+    localStorage.setItem('bf_rules',        JSON.stringify(currentRules));
+    localStorage.setItem('bf_banned',       JSON.stringify(currentBanned));
+    localStorage.setItem('bf_king',         JSON.stringify(customKing));
+    localStorage.setItem('bf_discord',      discordLink);
+    if (triggerCloud) syncToCloud();
+}
+
+/* =========================================================
+   MODAL HELPERS
+   ========================================================= */
+const MODAL_IDS = ['profileModal','fruitTopModal','countryTopModal','adminLoginModal','playerModal','fruitModal','countryModal','creatorModal','tournamentModal','kingModal','discordModal','ruleModal','bannedModal'];
+
+function openModal(id) {
+    const m = document.getElementById(id); if (!m) return;
+    m.classList.remove('hidden'); m.classList.add('flex');
+    document.body.classList.add('modal-open');
+    updateModalZIndexes();
+}
+function closeModal(id) {
+    const m = document.getElementById(id); if (!m) return;
+    m.classList.add('hidden'); m.classList.remove('flex');
+    const anyOpen = MODAL_IDS.some(i => { const el = document.getElementById(i); return el && !el.classList.contains('hidden'); });
+    if (!anyOpen) document.body.classList.remove('modal-open');
+    updateModalZIndexes();
+}
+function updateModalZIndexes() {
+    let z = 55;
+    MODAL_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el || el.classList.contains('hidden')) return;
+        el.style.zIndex = String(z);
+        z += 2;
+    });
+}
+MODAL_IDS.forEach(id => {
+    const el = document.getElementById(id); if (!el) return;
+    el.addEventListener('click', (e) => { if (e.target === el) closeModal(id); });
+});
+
+const escapeHtml = (str) => {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, (m) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;' }[m]));
+};
+
+function showToast(msg, type = "info") {
+    const c = document.getElementById('toastContainer'); if (!c) return;
+    const t = document.createElement('div');
+    let colors = "bg-slate-900 border-cyan-500 text-cyan-300";
+    if (type === "success") colors = "bg-slate-900 border-emerald-500 text-emerald-300";
+    if (type === "error")   colors = "bg-slate-900 border-red-500 text-red-300";
+    t.className = `p-4 rounded-xl border ${colors} shadow-xl text-xs font-bold flex items-center justify-between gap-3 transform transition-all duration-300 translate-y-2 opacity-0 pointer-events-auto`;
+    t.innerHTML = `<span>${escapeHtml(msg)}</span><button onclick="this.parentElement.remove()" class="text-slate-500 hover:text-white"><i class="fa-solid fa-xmark"></i></button>`;
+    c.appendChild(t);
+    setTimeout(() => t.classList.remove('translate-y-2','opacity-0'), 10);
+    setTimeout(() => { t.classList.add('opacity-0'); setTimeout(() => t.remove(), 300); }, 4000);
+}
+
+function rankBadge(rank) {
+    if (rank === 1) return `<span class="w-9 h-9 rounded-full rank-gold flex items-center justify-center text-sm shadow-lg shadow-amber-500/30">1</span>`;
+    if (rank === 2) return `<span class="w-9 h-9 rounded-full rank-silver flex items-center justify-center text-sm shadow-lg shadow-slate-400/30">2</span>`;
+    if (rank === 3) return `<span class="w-9 h-9 rounded-full rank-bronze flex items-center justify-center text-sm shadow-lg shadow-amber-700/30">3</span>`;
+    return `<span class="w-9 h-9 rounded-full rank-normal flex items-center justify-center text-xs">${rank}</span>`;
+}
+
+function renderSocialIcons(obj) {
+    const parts = [];
+    if (obj.discord) parts.push(`<a href="#" title="Discord: ${escapeHtml(obj.discord)}" class="w-7 h-7 rounded-lg bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 flex items-center justify-center text-xs hover:bg-indigo-500/30 hover:scale-110 transition"><i class="fa-brands fa-discord"></i></a>`);
+    if (obj.youtube) parts.push(`<a href="https://youtube.com/${obj.youtube.startsWith('@') ? obj.youtube : '@'+obj.youtube}" target="_blank" title="YouTube" class="w-7 h-7 rounded-lg bg-red-500/15 border border-red-500/30 text-red-300 flex items-center justify-center text-xs hover:bg-red-500/30 hover:scale-110 transition"><i class="fa-brands fa-youtube"></i></a>`);
+    if (obj.tiktok)  parts.push(`<a href="https://tiktok.com/${obj.tiktok.startsWith('@') ? obj.tiktok : '@'+obj.tiktok}" target="_blank" title="TikTok" class="w-7 h-7 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-300 flex items-center justify-center text-xs hover:bg-pink-500/30 hover:scale-110 transition"><i class="fa-brands fa-tiktok"></i></a>`);
+    if (!parts.length) return `<span class="text-[10px] text-slate-600">—</span>`;
+    return `<div class="flex items-center justify-center gap-1">${parts.join('')}</div>`;
+}
+
+function renderAllUI() {
+    renderKingHero();
+    renderLeaderboard();
+    renderFruits();
+    renderCountries();
+    renderCreators();
+    renderTournaments();
+    renderRules();
+    renderBannedPlayers();
+    renderDiscordLink();
+}
+
+async function renderKingHero() {
+    let king = customKing;
+    if (!king && currentLeaderboards.global?.length) {
+        const t = currentLeaderboards.global[0];
+        king = { name:t.name, crew:t.crew, discordId: t.discordId };
+    }
+    if (!king) return;
+    document.getElementById('topGlobalHeroName').innerText = king.name || 'Sin Nombre';
+    document.getElementById('topGlobalHeroCrew').innerText = `Crew: ${king.crew || 'Sin Crew'}`;
+    const avatarBox = document.getElementById('kingAvatar');
+    if (king.discordId) {
+        const data = await fetchDiscordAvatar(king.discordId);
+        if (data) avatarBox.innerHTML = `<img src="${data.avatar}" class="w-full h-full object-cover rounded-2xl" alt="${escapeHtml(king.name)}">`;
+    }
+}
+window.openEditKingModal = function() {
+    document.getElementById('kingName').value = document.getElementById('topGlobalHeroName').innerText;
+    document.getElementById('kingCrew').value = document.getElementById('topGlobalHeroCrew').innerText.replace('Crew: ','');
+    document.getElementById('kingDiscordId').value = customKing?.discordId || '';
+    openModal('kingModal');
+};
+window.closeEditKingModal = function() { closeModal('kingModal'); };
+window.saveCustomKing = function(e) {
+    e.preventDefault();
+    customKing = { name: document.getElementById('kingName').value.trim(), crew: document.getElementById('kingCrew').value.trim(), discordId: document.getElementById('kingDiscordId').value.trim() };
+    if (!customKing.name) return;
+    saveToLocalStorage(true); renderKingHero(); closeEditKingModal();
+    showToast("Rey del Mar actualizado","success");
+};
+
+window.copyDiscordLink = function() {
+    const link = discordLink || "https://discord.gg/g4HxzXfhd";
+    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(link).then(() => showToast("Enlace copiado","success")).catch(() => fallbackCopy(link));
+    else fallbackCopy(link);
+};
+function fallbackCopy(text) {
+    const ta = document.createElement("textarea"); ta.value = text;
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast("Enlace copiado","success"); }
+    catch { showToast("Enlace: " + text, "info"); }
+    document.body.removeChild(ta);
+}
+function renderDiscordLink() { const el = document.getElementById('displayDiscordLink'); if (el) el.innerText = discordLink; }
+window.openEditDiscordModal = function() { document.getElementById('discordInput').value = discordLink; openModal('discordModal'); };
+window.closeEditDiscordModal = function() { closeModal('discordModal'); };
+window.saveDiscordLink = function(e) {
+    e.preventDefault();
+    const v = document.getElementById('discordInput').value.trim(); if (!v) return;
+    discordLink = v; saveToLocalStorage(true); renderDiscordLink();
+    closeEditDiscordModal(); showToast("Enlace actualizado","success");
+};
+
+window.openAdminModal = function() {
+    if (isAdminLoggedIn) { isAdminLoggedIn = false; updateAdminStateUI(); showToast("Saliste del modo Admin","info"); }
+    else {
+        openModal('adminLoginModal');
+        document.getElementById('loginErrorMsg').classList.add('hidden');
+        document.getElementById('adminPasswordInput').value = '';
+    }
+};
+window.closeAdminModal = function() { closeModal('adminLoginModal'); };
+window.handleAdminLogin = function(e) {
+    e.preventDefault();
+    if (document.getElementById('adminPasswordInput').value === ADMIN_PASSWORD_REQUIRED) {
+        isAdminLoggedIn = true; updateAdminStateUI(); closeAdminModal();
+        showToast("Modo Admin activado","success");
+    } else document.getElementById('loginErrorMsg').classList.remove('hidden');
+};
+function updateAdminStateUI() {
+    document.getElementById('adminBtnText').innerText = isAdminLoggedIn ? 'Modo Admin (Activo)' : 'Modo Admin';
+    document.getElementById('adminLockIcon').className = isAdminLoggedIn ? 'fa-solid fa-unlock-keyhole' : 'fa-solid fa-lock';
+    ['adminPlayerControls','adminFruitControls','adminCountryControls','adminCreatorControls','adminTournamentControls','adminRulesControls','adminBannedControls','editKingBtn','editDiscordBtn']
+        .forEach(id => document.getElementById(id)?.classList.toggle('hidden', !isAdminLoggedIn));
+    document.querySelectorAll('.admin-col').forEach(c => c.classList.toggle('hidden', !isAdminLoggedIn));
+    renderAllUI();
+}
+
+window.switchBoardTab = function(tab) {
+    activeBoardTab = tab;
+    document.querySelectorAll('.board-tab-btn').forEach(b => b.className = "board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white");
+    const a = document.getElementById(`boardTab-${tab}`);
+    if (a) a.className = "board-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-cyan-500/20 border border-cyan-500/40 text-cyan-300";
+    renderLeaderboard();
+};
+window.selectLeaderboard = function(tab) { switchTab('leaderboards'); switchBoardTab(tab); };
+
+function renderLeaderboard() {
+    const tbody = document.getElementById('leaderboardTableBody'); if (!tbody) return;
+    tbody.innerHTML = '';
+    const list = (currentLeaderboards[activeBoardTab] || []).slice(0, 20);
+    if (!list.length) { tbody.innerHTML = `<tr><td colspan="8" class="text-center py-8 text-slate-500">No hay jugadores registrados aún.</td></tr>`; return; }
+
+    list.forEach((p, index) => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-800/40 transition cursor-pointer animate-fade-up";
+        tr.style.animationDelay = (index * 0.03) + 's';
+        tr.onclick = (e) => { if (!e.target.closest('button') && !e.target.closest('a')) openProfileModal(p); };
+        tr.innerHTML = `
+            <td class="px-6 py-4">${rankBadge(index + 1)}</td>
+            <td class="px-6 py-4 font-extrabold text-white flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-600 p-0.5" data-avatar-slot="${escapeHtml(p.discordId || '')}">
+                        <div class="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center text-cyan-400 overflow-hidden"><i class="fa-solid fa-user-ninja"></i></div>
+                    </div>
+                    <span class="absolute -bottom-1 -right-1">${flagImg(p.country, 20)}</span>
+                </div>
+                <div>${escapeHtml(p.name)}</div>
+            </td>
+            <td class="px-6 py-4 text-slate-300 font-semibold"><span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs text-amber-300">⚓ ${escapeHtml(p.crew || 'Sin Crew')}</span></td>
+            <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-bold">${escapeHtml(p.fruit || '—')}</span></td>
+            <td class="px-6 py-4 text-center">${tierLabel(p.tier)}</td>
+            <td class="px-6 py-4 text-center"><span class="text-xs font-bold uppercase text-cyan-300">${escapeHtml((p.region || activeBoardTab).toUpperCase())}</span></td>
+            <td class="px-6 py-4 text-center">${renderSocialIcons(p)}</td>
+            <td class="px-6 py-4 text-center admin-col ${isAdminLoggedIn ? '' : 'hidden'}">
+                <div class="flex items-center justify-center gap-2">
+                    <button onclick="editPlayer(${index})" class="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition"><i class="fa-solid fa-pen"></i></button>
+                    <button onclick="deletePlayer(${index})" class="p-2 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 transition"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </td>`;
+        tbody.appendChild(tr);
+    });
+
+    list.forEach(p => {
+        if (!p.discordId) return;
+        fetchDiscordAvatar(p.discordId).then(data => {
+            if (!data) return;
+            const slot = tbody.querySelector(`[data-avatar-slot="${p.discordId}"]`);
+            if (slot) slot.querySelector('div').innerHTML = `<img src="${data.avatar}" class="w-full h-full object-cover rounded-[10px]" alt="${escapeHtml(p.name)}">`;
+        });
+    });
+}
+
+window.filterLeaderboard = function() {
+    const q = (document.getElementById('playerSearchInput').value || '').toLowerCase();
+    document.querySelectorAll('#leaderboardTableBody tr').forEach(r => {
+        r.style.display = r.innerText.toLowerCase().includes(q) ? '' : 'none';
+    });
+};
+
+window.openProfileModal = async function(p) {
+    if (!p) return;
+    document.getElementById('profileContent').innerHTML = `
+        <div class="h-36 rounded-t-3xl bg-gradient-to-r from-slate-800 to-slate-700"></div>
+        <div class="p-6 text-center text-slate-400"><i class="fa-solid fa-spinner fa-spin text-2xl"></i><p class="mt-2 text-xs">Cargando perfil...</p></div>`;
+    openModal('profileModal');
+
+    let avatarUrl = null, discordName = null;
+    if (p.discordId) {
+        const data = await fetchDiscordAvatar(p.discordId);
+        if (data) { avatarUrl = data.avatar; discordName = data.global_name || data.username; }
+    }
+    let dominantColor = '#1e293b';
+    if (avatarUrl) dominantColor = await extractDominantColor(avatarUrl);
+
+    const flagIso = COUNTRY_TO_ISO[p.country];
+    const flagUrl = flagIso ? `https://flagcdn.com/w80/${flagIso}.png` : '';
+
+    document.getElementById('profileContent').innerHTML = `
+        <div class="profile-banner" style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.15), transparent 60%), linear-gradient(135deg, ${dominantColor}, ${shadeColor(dominantColor, -30)});">
+        </div>
+        <div class="relative pt-20 pb-6 px-6 space-y-5">
+            <div class="profile-avatar-wrap">
+                <div class="profile-avatar-inner">
+                    ${avatarUrl ? `<img src="${avatarUrl}" alt="${escapeHtml(p.name)}">` : `<i class="fa-solid fa-user-ninja"></i>`}
+                    ${flagUrl ? `<div class="profile-avatar-flag"><img src="${flagUrl}" alt="${escapeHtml(p.country)}"></div>` : ''}
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-black text-white">${escapeHtml(p.name)}</h2>
+                ${discordName && discordName !== p.name ? `<p class="text-xs text-indigo-300 mt-1"><i class="fa-brands fa-discord"></i> ${escapeHtml(discordName)}</p>` : ''}
+                <div class="flex flex-wrap items-center gap-2 mt-3">
+                    <span class="text-xs font-bold text-amber-300 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full">⚓ ${escapeHtml(p.crew || 'Sin Crew')}</span>
+                    <span class="text-xs font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 px-2.5 py-1 rounded-full inline-flex items-center gap-1">${flagImg(p.country, 20)} ${escapeHtml(p.country || 'Sin país')}</span>
+                    ${tierLabel(p.tier)}
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="bg-slate-950 border border-cyan-500/30 rounded-xl p-3 text-center"><div class="text-[10px] uppercase font-bold text-slate-500">Top Global</div><div class="text-2xl font-black text-cyan-300">#${computeGlobalRank(p.name) || '—'}</div></div>
+                <div class="bg-slate-950 border border-purple-500/30 rounded-xl p-3 text-center"><div class="text-[10px] uppercase font-bold text-slate-500">Top ${escapeHtml(p.fruit)}</div><div class="text-2xl font-black text-purple-300">#${computeFruitRank(p.fruit, p.name) || '—'}</div></div>
+                <div class="bg-slate-950 border border-teal-500/30 rounded-xl p-3 text-center"><div class="text-[10px] uppercase font-bold text-slate-500">Top País</div><div class="text-2xl font-black text-teal-300">#${computeCountryRank(p.country, p.name) || '—'}</div></div>
+            </div>
+            <div>
+                <h3 class="text-sm font-black uppercase text-slate-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-cyan-400"></i> Set Maineado</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3"><div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1"><i class="fa-solid fa-hand-fist text-rose-400"></i> Melee</div><div class="text-sm font-bold text-white mt-1">${escapeHtml(p.melee || '—')}</div></div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3"><div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1"><i class="fa-solid fa-apple-whole text-purple-400"></i> Fruit</div><div class="text-sm font-bold text-white mt-1">${escapeHtml(p.fruit || '—')}</div></div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3"><div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1"><i class="fa-solid fa-khanda text-cyan-400"></i> Sword</div><div class="text-sm font-bold text-white mt-1">${escapeHtml(p.sword || '—')}</div></div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3"><div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1"><i class="fa-solid fa-crosshairs text-amber-400"></i> Gun</div><div class="text-sm font-bold text-white mt-1">${escapeHtml(p.gun || '—')}</div></div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 col-span-2 sm:col-span-1"><div class="text-[10px] uppercase font-bold text-slate-500 flex items-center gap-1"><i class="fa-solid fa-dna text-emerald-400"></i> Raza</div><div class="text-sm font-bold text-white mt-1">${escapeHtml(p.race || '—')}</div></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-sm font-black uppercase text-slate-400 mb-3 flex items-center gap-2"><i class="fa-solid fa-link text-pink-400"></i> Redes Sociales</h3>
+                <div class="flex flex-wrap gap-2">${renderSocialIcons(p)}</div>
+            </div>
+        </div>`;
+};
+window.closeProfileModal = function() { closeModal('profileModal'); };
+
+function shadeColor(rgbStr, percent) {
+    const m = rgbStr.match(/\d+/g); if (!m) return rgbStr;
+    let [r,g,b] = m.map(Number);
+    const f = percent / 100;
+    r = Math.max(0, Math.min(255, Math.round(r + 255 * f)));
+    g = Math.max(0, Math.min(255, Math.round(g + 255 * f)));
+    b = Math.max(0, Math.min(255, Math.round(b + 255 * f)));
+    return `rgb(${r},${g},${b})`;
+}
+function computeFruitRank(fruit, name) {
+    const pool = [];
+    Object.values(currentLeaderboards).forEach(arr => arr.forEach(p => { if (p.fruit === fruit) pool.push(p); }));
+    const idx = pool.findIndex(p => p.name === name);
+    return idx >= 0 ? idx + 1 : null;
+}
+function computeCountryRank(country, name) {
+    const pool = [];
+    Object.values(currentLeaderboards).forEach(arr => arr.forEach(p => { if (p.country === country) pool.push(p); }));
+    const idx = pool.findIndex(p => p.name === name);
+    return idx >= 0 ? idx + 1 : null;
+}
+function computeGlobalRank(name) {
+    const pool = [];
+    Object.values(currentLeaderboards).forEach(arr => arr.forEach(p => pool.push(p)));
+    const idx = pool.findIndex(p => p.name === name);
+    return idx >= 0 ? idx + 1 : null;
+}
+
+window.openFruitTopModal = function(fruitName) {
+    const players = [];
+    Object.entries(currentLeaderboards).forEach(([region, arr]) => {
+        arr.forEach(p => { if (p.fruit === fruitName) players.push({ ...p, _region: region }); });
+    });
+    const fruit = currentFruits.find(f => f.name === fruitName) || { name:fruitName, image:'', desc:'' };
+    const img = FRUIT_IMAGES[fruitName] || fruit.image || '';
+
+    const rows = players.length ? players.map((p, i) => `
+        <tr class="hover:bg-slate-800/40 cursor-pointer transition" data-fruit-player='${JSON.stringify(p).replace(/'/g,"&#39;")}'>
+            <td class="px-4 py-3">${rankBadge(i + 1)}</td>
+            <td class="px-4 py-3 font-bold text-white flex items-center gap-2">${flagImg(p.country, 20)} ${escapeHtml(p.name)}</td>
+            <td class="px-4 py-3 text-xs text-amber-300 font-semibold">⚓ ${escapeHtml(p.crew || 'Sin Crew')}</td>
+            <td class="px-4 py-3 text-center">${tierLabel(p.tier)}</td>
+            <td class="px-4 py-3 text-xs uppercase text-cyan-300 font-bold">${escapeHtml(p._region)}</td>
+        </tr>`).join('') : `<tr><td colspan="5" class="text-center py-6 text-slate-500">Ningún jugador usa esta fruta actualmente.</td></tr>`;
+
+    document.getElementById('fruitTopContent').innerHTML = `
+        <div class="p-6 sm:p-8 space-y-6">
+            <div class="flex items-center gap-4">
+                <div class="w-24 h-24 rounded-2xl fruit-img-slot flex items-center justify-center text-slate-500 text-xs font-bold text-center p-2 shrink-0">
+                    ${img ? `<img src="${escapeHtml(img)}" class="w-full h-full object-contain rounded-xl" alt="${escapeHtml(fruitName)}">` : `Imagen<br>Fruta`}
+                </div>
+                <div>
+                    <h2 class="text-3xl font-black text-white">${escapeHtml(fruitName)}</h2>
+                    <p class="text-xs text-slate-400 mt-1">${fruit.uses || 0} usos registrados</p>
+                    <p class="text-xs text-slate-500 mt-1">${escapeHtml(fruit.desc || '')}</p>
+                </div>
+            </div>
+            <div class="overflow-x-auto bg-slate-950 rounded-xl border border-slate-800">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-slate-900 text-slate-400 uppercase text-xs font-bold border-b border-slate-800">
+                        <tr><th class="px-4 py-3">Top</th><th class="px-4 py-3">Jugador</th><th class="px-4 py-3">Crew</th><th class="px-4 py-3 text-center">Tier</th><th class="px-4 py-3">Región</th></tr>
+                    </thead>
+                    <tbody id="fruitTopTableBody" class="divide-y divide-slate-800/60">${rows}</tbody>
+                </table>
+            </div>
+        </div>`;
+
+    document.querySelectorAll('#fruitTopTableBody tr[data-fruit-player]').forEach(tr => {
+        tr.addEventListener('click', () => {
+            const p = JSON.parse(tr.dataset.fruitPlayer);
+            closeModal('fruitTopModal');
+            setTimeout(() => openProfileModal(p), 120);
+        });
+    });
+    openModal('fruitTopModal');
+};
+window.closeFruitTopModal = function() { closeModal('fruitTopModal'); };
+
+window.openCountryTopModal = function(countryName, code) {
+    const players = [];
+    Object.entries(currentLeaderboards).forEach(([region, arr]) => {
+        arr.forEach(p => { if (p.country === countryName) players.push({ ...p, _region: region }); });
+    });
+    const rows = players.length ? players.map((p, i) => `
+        <tr class="hover:bg-slate-800/40 cursor-pointer transition" data-country-player='${JSON.stringify(p).replace(/'/g,"&#39;")}'>
+            <td class="px-4 py-3">${rankBadge(i + 1)}</td>
+            <td class="px-4 py-3 font-bold text-white">${escapeHtml(p.name)}</td>
+            <td class="px-4 py-3 text-xs text-purple-300 font-semibold">${escapeHtml(p.fruit || '—')}</td>
+            <td class="px-4 py-3 text-xs text-amber-300 font-semibold">⚓ ${escapeHtml(p.crew || 'Sin Crew')}</td>
+            <td class="px-4 py-3 text-center">${tierLabel(p.tier)}</td>
+            <td class="px-4 py-3 text-xs uppercase text-cyan-300 font-bold">${escapeHtml(p._region)}</td>
+        </tr>`).join('') : `<tr><td colspan="6" class="text-center py-6 text-slate-500">Sin jugadores registrados de este país.</td></tr>`;
+
+    document.getElementById('countryTopContent').innerHTML = `
+        <div class="p-6 sm:p-8 space-y-6">
+            <div class="flex items-center gap-4">
+                <div class="w-24 h-16 rounded-lg overflow-hidden shadow-lg">${flagImg(countryName, 160)}</div>
+                <div>
+                    <h2 class="text-3xl font-black text-white">${escapeHtml(countryName)}</h2>
+                    <p class="text-xs text-slate-400 mt-1">${players.length} jugadores en los rankings</p>
+                </div>
+            </div>
+            <div class="overflow-x-auto bg-slate-950 rounded-xl border border-slate-800">
+                <table class="w-full text-left text-sm text-slate-300">
+                    <thead class="bg-slate-900 text-slate-400 uppercase text-xs font-bold border-b border-slate-800">
+                        <tr><th class="px-4 py-3">Top</th><th class="px-4 py-3">Jugador</th><th class="px-4 py-3">Fruit</th><th class="px-4 py-3">Crew</th><th class="px-4 py-3 text-center">Tier</th><th class="px-4 py-3">Región</th></tr>
+                    </thead>
+                    <tbody id="countryTopTableBody" class="divide-y divide-slate-800/60">${rows}</tbody>
+                </table>
+            </div>
+        </div>`;
+
+    document.querySelectorAll('#countryTopTableBody tr[data-country-player]').forEach(tr => {
+        tr.addEventListener('click', () => {
+            const p = JSON.parse(tr.dataset.countryPlayer);
+            closeModal('countryTopModal');
+            setTimeout(() => openProfileModal(p), 120);
+        });
+    });
+    openModal('countryTopModal');
+};
+window.closeCountryTopModal = function() { closeModal('countryTopModal'); };
+
+function fillSelects() {
+    const fruitSel = document.getElementById('playerFruit');
+    if (fruitSel) fruitSel.innerHTML = FRUIT_LIST.map(f => `<option value="${f}">${f}</option>`).join('');
+    const countrySel = document.getElementById('playerCountry');
+    if (countrySel) countrySel.innerHTML = COUNTRY_OPTIONS.map(c => `<option value="${c}">${c}</option>`).join('');
+}
+window.openAddPlayerModal = function() {
+    fillSelects();
+    document.getElementById('playerModalTitle').innerHTML = `<i class="fa-solid fa-user-plus text-cyan-400"></i> Agregar Jugador`;
+    document.getElementById('editPlayerIndex').value = "-1";
+    ['playerName','playerCrew','playerMelee','playerSword','playerGun','playerDiscord','playerYoutube','playerTiktok','playerDiscordId'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('playerBoardCategory').value = activeBoardTab;
+    document.getElementById('playerTier').value = "1";
+    document.getElementById('playerRace').value = "Cyborg";
+    document.getElementById('playerCountry').value = "Japón";
+    openModal('playerModal');
+};
+window.closePlayerModal = function() { closeModal('playerModal'); };
+window.editPlayer = function(index) {
+    const p = currentLeaderboards[activeBoardTab]?.[index]; if (!p) return;
+    fillSelects();
+    document.getElementById('playerModalTitle').innerHTML = `<i class="fa-solid fa-pen text-cyan-400"></i> Editar Jugador`;
+    document.getElementById('editPlayerIndex').value = index;
+    document.getElementById('playerName').value = p.name;
+    document.getElementById('playerCrew').value = p.crew || '';
+    document.getElementById('playerCountry').value = COUNTRY_TO_ISO[p.country] ? p.country : 'Japón';
+    document.getElementById('playerTier').value = p.tier || 1;
+    document.getElementById('playerMelee').value = p.melee || '';
+    document.getElementById('playerSword').value = p.sword || '';
+    document.getElementById('playerGun').value = p.gun || '';
+    document.getElementById('playerRace').value = p.race || 'Cyborg';
+    document.getElementById('playerFruit').value = FRUIT_LIST.includes(p.fruit) ? p.fruit : 'Portal';
+    document.getElementById('playerBoardCategory').value = activeBoardTab;
+    document.getElementById('playerDiscord').value = p.discord || '';
+    document.getElementById('playerYoutube').value = p.youtube || '';
+    document.getElementById('playerTiktok').value  = p.tiktok  || '';
+    document.getElementById('playerDiscordId').value = p.discordId || '';
+    openModal('playerModal');
+};
+window.savePlayer = function(e) {
+    e.preventDefault();
+    const editIndex = parseInt(document.getElementById('editPlayerIndex').value);
+    const category = document.getElementById('playerBoardCategory').value;
+    const data = {
+        name:    document.getElementById('playerName').value.trim(),
+        crew:    document.getElementById('playerCrew').value.trim() || 'Sin Crew',
+        country: document.getElementById('playerCountry').value,
+        tier:    parseInt(document.getElementById('playerTier').value) || 1,
+        melee:   document.getElementById('playerMelee').value.trim(),
+        fruit:   document.getElementById('playerFruit').value,
+        sword:   document.getElementById('playerSword').value.trim(),
+        gun:     document.getElementById('playerGun').value.trim(),
+        race:    document.getElementById('playerRace').value,
+        region:  category,
+        discordId: document.getElementById('playerDiscordId').value.trim(),
+        discord: document.getElementById('playerDiscord').value.trim(),
+        youtube: document.getElementById('playerYoutube').value.trim(),
+        tiktok:  document.getElementById('playerTiktok').value.trim()
+    };
+    if (!data.name) return;
+    const dup = (currentLeaderboards[category] || []).some((p, i) => p.name.toLowerCase() === data.name.toLowerCase() && !(category === activeBoardTab && i === editIndex));
+    if (dup) { showToast("Ese jugador ya existe en esa tabla", "error"); return; }
+    if (editIndex >= 0) {
+        currentLeaderboards[activeBoardTab][editIndex] = { ...currentLeaderboards[activeBoardTab][editIndex], ...data };
+        showToast(`Jugador ${data.name} actualizado`, "success");
+    } else {
+        if (!currentLeaderboards[category]) currentLeaderboards[category] = [];
+        currentLeaderboards[category].unshift(data);
+        if (currentLeaderboards[category].length > 20) currentLeaderboards[category].pop();
+        showToast(`Jugador ${data.name} agregado`, "success");
+    }
+    saveToLocalStorage(true); closePlayerModal(); renderKingHero(); renderLeaderboard();
+};
+window.deletePlayer = function(index) {
+    const p = currentLeaderboards[activeBoardTab]?.[index]; if (!p) return;
+    currentLeaderboards[activeBoardTab].splice(index, 1);
+    saveToLocalStorage(true); renderKingHero(); renderLeaderboard();
+    showToast(`Jugador ${p.name} eliminado`, "info");
+};
+
+function renderFruits() {
+    const grid = document.getElementById('fruitGrid'); if (!grid) return;
+    grid.innerHTML = '';
+    const sorted = [...currentFruits].sort((a, b) => a.name.localeCompare(b.name));
+    sorted.forEach((fruit, idx) => {
+        const idxOrig = currentFruits.indexOf(fruit);
+        const img = FRUIT_IMAGES[fruit.name] || fruit.image || '';
+        const card = document.createElement('div');
+        card.className = "fruit-card cursor-pointer animate-fade-up";
+        card.style.animationDelay = (idx * 0.03) + 's';
+        card.onclick = (e) => { if (!e.target.closest('button')) openFruitTopModal(fruit.name); };
+        card.innerHTML = `
+            <div class="fruit-card-inner space-y-3 flex flex-col h-full">
+                <div class="flex items-start justify-between gap-2">
+                    <div class="w-24 h-24 mx-auto rounded-xl fruit-img-slot flex items-center justify-center text-slate-500 text-[9px] font-bold text-center p-1 shrink-0 overflow-hidden">
+                        ${img ? `<img src="${escapeHtml(img)}" class="w-full h-full object-contain rounded-lg" alt="${escapeHtml(fruit.name)}">` : `Imagen<br>Fruta`}
+                    </div>
+                    ${isAdminLoggedIn ? `
+                        <div class="flex flex-col gap-1">
+                            <button onclick="event.stopPropagation();editFruit(${idxOrig})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="event.stopPropagation();deleteFruit(${idxOrig})" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                        </div>` : ''}
+                </div>
+                <div class="text-center"><h3 class="text-base font-extrabold text-white">${escapeHtml(fruit.name)}</h3></div>
+                <div class="text-[10px] text-cyan-400 font-bold flex items-center justify-center gap-1 transition mt-auto">Ver Top <i class="fa-solid fa-arrow-right"></i></div>
+            </div>`;
+        grid.appendChild(card);
+    });
+}
+window.openAddFruitModal = function() {
+    document.getElementById('fruitModalTitle').innerHTML = `<i class="fa-solid fa-apple-whole text-rose-400"></i> Agregar Fruta`;
+    document.getElementById('editFruitIndex').value = "-1";
+    ['fruitName','fruitImage','fruitDesc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fruitUses').value = 0;
+    openModal('fruitModal');
+};
+window.closeFruitModal = function() { closeModal('fruitModal'); };
+window.editFruit = function(idx) {
+    const f = currentFruits[idx]; if (!f) return;
+    document.getElementById('fruitModalTitle').innerHTML = `<i class="fa-solid fa-pen text-rose-400"></i> Editar Fruta`;
+    document.getElementById('editFruitIndex').value = idx;
+    document.getElementById('fruitName').value = f.name;
+    document.getElementById('fruitUses').value = f.uses;
+    document.getElementById('fruitImage').value = f.image || '';
+    document.getElementById('fruitDesc').value = f.desc || '';
+    openModal('fruitModal');
+};
+window.saveFruit = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editFruitIndex').value);
+    const obj = {
+        name:  document.getElementById('fruitName').value.trim(),
+        uses:  parseInt(document.getElementById('fruitUses').value) || 0,
+        image: document.getElementById('fruitImage').value.trim(),
+        desc:  document.getElementById('fruitDesc').value.trim()
+    };
+    if (!obj.name) return;
+    if (idx >= 0) { currentFruits[idx] = obj; showToast("Fruta actualizada","success"); }
+    else { currentFruits.push(obj); showToast("Fruta agregada","success"); }
+    saveToLocalStorage(true); closeFruitModal(); renderFruits();
+};
+window.deleteFruit = function(idx) { currentFruits.splice(idx, 1); saveToLocalStorage(true); renderFruits(); showToast("Fruta eliminada","info"); };
+
+function renderCountries() {
+    const grid = document.getElementById('countryGrid'); if (!grid) return;
+    grid.innerHTML = '';
+    const sorted = [...currentCountries].sort((a, b) => (b.points || 0) - (a.points || 0));
+    const maxPts = Math.max(...sorted.map(c => c.points || 1), 1);
+    sorted.forEach((c, idx) => {
+        const idxOrig = currentCountries.indexOf(c);
+        const pct = Math.max(6, Math.round((c.points / maxPts) * 100));
+        const row = document.createElement('div');
+        row.className = "bg-slate-900/80 border border-slate-800 rounded-2xl p-4 hover:border-teal-500/40 transition flex items-center gap-4 cursor-pointer animate-fade-up backdrop-blur-sm";
+        row.style.animationDelay = (idx * 0.04) + 's';
+        row.onclick = (e) => { if (!e.target.closest('button')) openCountryTopModal(c.name, c.code); };
+        row.innerHTML = `
+            <div class="shrink-0">${rankBadge(idx + 1)}</div>
+            <div class="w-14 h-10 rounded-lg overflow-hidden shadow-lg shrink-0">${flagImg(c.name, 80)}</div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1">
+                    <h4 class="font-extrabold text-white truncate">${escapeHtml(c.name)}</h4>
+                    <span class="text-xs font-bold text-teal-300">${(c.points || 0).toLocaleString('es-ES')} pts</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-2 mb-1"><div class="bg-gradient-to-r from-teal-500 to-emerald-500 h-2 rounded-full transition-all duration-700" style="width:${pct}%"></div></div>
+                <div class="text-[11px] text-slate-400">${c.players} jugadores en el Top</div>
+            </div>
+            ${isAdminLoggedIn ? `
+                <div class="flex flex-col gap-1">
+                    <button onclick="event.stopPropagation();editCountry(${idxOrig})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-pen"></i></button>
+                    <button onclick="event.stopPropagation();deleteCountry(${idxOrig})" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                </div>` : ''}`;
+        grid.appendChild(row);
+    });
+}
+window.openAddCountryModal = function() {
+    document.getElementById('countryModalTitle').innerHTML = `<i class="fa-solid fa-globe text-teal-400"></i> Agregar País`;
+    document.getElementById('editCountryIndex').value = "-1";
+    document.getElementById('countryFlag').value = "jp";
+    document.getElementById('countryName').value = "";
+    document.getElementById('countryPlayers').value = 0;
+    document.getElementById('countryPoints').value = 0;
+    openModal('countryModal');
+};
+window.closeCountryModal = function() { closeModal('countryModal'); };
+window.editCountry = function(idx) {
+    const c = currentCountries[idx]; if (!c) return;
+    document.getElementById('countryModalTitle').innerHTML = `<i class="fa-solid fa-pen text-teal-400"></i> Editar País`;
+    document.getElementById('editCountryIndex').value = idx;
+    document.getElementById('countryFlag').value = c.code || '';
+    document.getElementById('countryName').value = c.name;
+    document.getElementById('countryPlayers').value = c.players;
+    document.getElementById('countryPoints').value = c.points;
+    openModal('countryModal');
+};
+window.saveCountry = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editCountryIndex').value);
+    const code = document.getElementById('countryFlag').value.trim().toLowerCase();
+    const obj = { code, name: document.getElementById('countryName').value.trim(), players: parseInt(document.getElementById('countryPlayers').value) || 0, points: parseInt(document.getElementById('countryPoints').value) || 0 };
+    if (!obj.name || !code) return;
+    if (idx >= 0) { currentCountries[idx] = obj; showToast("País actualizado","success"); }
+    else { currentCountries.push(obj); showToast("País agregado","success"); }
+    saveToLocalStorage(true); closeCountryModal(); renderCountries();
+};
+window.deleteCountry = function(idx) { currentCountries.splice(idx, 1); saveToLocalStorage(true); renderCountries(); showToast("País eliminado","info"); };
+
+window.switchCreatorRegion = function(tab) {
+    activeCreatorTab = tab;
+    document.querySelectorAll('.creator-tab-btn').forEach(b => b.className = "creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white");
+    const a = document.getElementById(`creatorTab-${tab}`);
+    if (a) a.className = "creator-tab-btn px-5 py-3 rounded-xl font-bold text-sm flex items-center gap-2 bg-pink-500/20 border border-pink-500/40 text-pink-300";
+    renderCreators();
+};
+function renderCreators() {
+    const grid = document.getElementById('creatorsGrid'); if (!grid) return;
+    grid.innerHTML = '';
+    let list = currentCreators;
+    if (activeCreatorTab !== 'global') list = currentCreators.filter(c => c.region === activeCreatorTab);
+    if (!list.length) { grid.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 bg-slate-900/60 rounded-2xl border border-slate-800">No hay creadores registrados en esta región.</div>`; return; }
+    list.forEach((creator, i) => {
+        const idxOrig = currentCreators.indexOf(creator);
+        const pMap = {
+            youtube: { icon:'fa-youtube', label:'YouTube', color:'text-red-400 bg-red-500/15 border-red-500/30' },
+            tiktok:  { icon:'fa-tiktok',  label:'TikTok',  color:'text-pink-400 bg-pink-500/15 border-pink-500/30' },
+            twitch:  { icon:'fa-twitch',  label:'Twitch',  color:'text-purple-400 bg-purple-500/15 border-purple-500/30' }
+        };
+        const p = pMap[creator.platform] || pMap.youtube;
+        const card = document.createElement('div');
+        card.className = "bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-3 hover:border-pink-500/40 transition relative overflow-hidden animate-fade-up backdrop-blur-sm";
+        card.style.animationDelay = (i * 0.05) + 's';
+        card.innerHTML = `
+            <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-fuchsia-600 flex items-center justify-center text-white text-xl shadow-lg shadow-pink-500/20 overflow-hidden" data-avatar-slot="${escapeHtml(creator.discordId || '')}"><i class="fa-brands ${p.icon}"></i></div>
+                    <div>
+                        <h4 class="font-extrabold text-white">${escapeHtml(creator.name)}</h4>
+                        <span class="inline-block mt-0.5 px-2 py-0.5 rounded-md border text-[10px] font-bold ${p.color}">${p.label}</span>
+                    </div>
+                </div>
+                ${isAdminLoggedIn ? `
+                    <div class="flex items-center gap-1">
+                        <button onclick="editCreator(${idxOrig})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteCreator(${idxOrig})" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>` : ''}
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div class="p-2 bg-slate-950 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-500 uppercase font-bold">Seguidores</div><div class="text-sm font-extrabold text-pink-300">${escapeHtml(creator.followers)}</div></div>
+                <div class="p-2 bg-slate-950 rounded-lg border border-slate-800"><div class="text-[10px] text-slate-500 uppercase font-bold">Región</div><div class="text-sm font-extrabold text-cyan-300 uppercase">${escapeHtml(creator.region)}</div></div>
+            </div>
+            <p class="text-xs text-slate-400">${escapeHtml(creator.specialty || '')}</p>
+            <div class="pt-1 border-t border-slate-800/80">${renderSocialIcons(creator)}</div>`;
+        grid.appendChild(card);
+    });
+    list.forEach(creator => {
+        if (!creator.discordId) return;
+        fetchDiscordAvatar(creator.discordId).then(data => {
+            if (!data) return;
+            const slot = grid.querySelector(`[data-avatar-slot="${creator.discordId}"]`);
+            if (slot) slot.innerHTML = `<img src="${data.avatar}" class="w-full h-full object-cover rounded-xl">`;
+        });
+    });
+}
+window.openAddCreatorModal = function() {
+    document.getElementById('creatorModalTitle').innerHTML = `<i class="fa-solid fa-video text-pink-400"></i> Agregar Creador`;
+    document.getElementById('editCreatorIndex').value = "-1";
+    ['creatorName','creatorFollowers','creatorSpecialty','creatorDiscord','creatorYoutube','creatorTiktok','creatorDiscordId'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('creatorPlatform').value = "youtube";
+    document.getElementById('creatorRegion').value = activeCreatorTab;
+    openModal('creatorModal');
+};
+window.closeCreatorModal = function() { closeModal('creatorModal'); };
+window.editCreator = function(idx) {
+    const c = currentCreators[idx]; if (!c) return;
+    document.getElementById('creatorModalTitle').innerHTML = `<i class="fa-solid fa-pen text-pink-400"></i> Editar Creador`;
+    document.getElementById('editCreatorIndex').value = idx;
+    document.getElementById('creatorName').value = c.name;
+    document.getElementById('creatorPlatform').value = c.platform;
+    document.getElementById('creatorRegion').value = c.region;
+    document.getElementById('creatorFollowers').value = c.followers;
+    document.getElementById('creatorSpecialty').value = c.specialty || '';
+    document.getElementById('creatorDiscord').value = c.discord || '';
+    document.getElementById('creatorYoutube').value = c.youtube || '';
+    document.getElementById('creatorTiktok').value = c.tiktok || '';
+    document.getElementById('creatorDiscordId').value = c.discordId || '';
+    openModal('creatorModal');
+};
+window.saveCreator = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editCreatorIndex').value);
+    const obj = {
+        name: document.getElementById('creatorName').value.trim(),
+        platform: document.getElementById('creatorPlatform').value,
+        region: document.getElementById('creatorRegion').value,
+        followers: document.getElementById('creatorFollowers').value.trim(),
+        specialty: document.getElementById('creatorSpecialty').value.trim(),
+        discord: document.getElementById('creatorDiscord').value.trim(),
+        youtube: document.getElementById('creatorYoutube').value.trim(),
+        tiktok: document.getElementById('creatorTiktok').value.trim(),
+        discordId: document.getElementById('creatorDiscordId').value.trim()
+    };
+    if (!obj.name) return;
+    if (idx >= 0) { currentCreators[idx] = obj; showToast("Creador actualizado","success"); }
+    else { currentCreators.push(obj); showToast("Creador agregado","success"); }
+    saveToLocalStorage(true); closeCreatorModal(); renderCreators();
+};
+window.deleteCreator = function(idx) { currentCreators.splice(idx, 1); saveToLocalStorage(true); renderCreators(); showToast("Creador eliminado","info"); };
+
+function renderTournaments() {
+    const container = document.getElementById('tournamentsList');
+    const winnersBody = document.getElementById('winnersTableBody');
+    if (!container || !winnersBody) return;
+    container.innerHTML = ''; winnersBody.innerHTML = '';
+    currentTournaments.forEach((t, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-slate-900/80 border border-purple-500/30 rounded-2xl p-6 space-y-4 animate-fade-up backdrop-blur-sm";
+        card.style.animationDelay = (idx * 0.05) + 's';
+        let badge = `<span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">${escapeHtml(t.status)}</span>`;
+        if (t.status.includes('Curso')) badge = `<span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 animate-pulse">${escapeHtml(t.status)}</span>`;
+        else if (t.status.includes('Finalizado')) badge = `<span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">${escapeHtml(t.status)}</span>`;
+        card.innerHTML = `
+            <div class="flex justify-between items-start gap-3">
+                <div><h4 class="text-xl font-bold text-white">${escapeHtml(t.name)}</h4><p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-calendar text-cyan-400 mr-1"></i> ${escapeHtml(t.date)}</p></div>
+                ${badge}
+            </div>
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1"><span class="text-xs text-slate-400 uppercase font-bold block">Premio:</span><span class="text-sm font-extrabold text-amber-300"><i class="fa-solid fa-gift mr-1"></i> ${escapeHtml(t.prize)}</span></div>
+            <div class="flex items-center justify-between pt-2">
+                <span class="text-xs text-slate-400">Campeón: <strong class="text-cyan-400">${escapeHtml(t.winner || '-')}</strong></span>
+                ${isAdminLoggedIn ? `
+                    <div class="flex items-center gap-2">
+                        <button onclick="editTournament(${idx})" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-purple-500/10 text-purple-300 border border-purple-500/20 hover:bg-purple-500/20"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteTournament(${idx})" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20"><i class="fa-solid fa-trash"></i></button>
+                    </div>` : ''}
+            </div>`;
+        container.appendChild(card);
+        if (t.status.includes('Finalizado') || (t.winner && t.winner !== '-')) {
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-slate-800/40";
+            tr.innerHTML = `
+                <td class="px-4 py-3 font-bold text-white">${escapeHtml(t.name)}</td>
+                <td class="px-4 py-3 text-slate-400 text-xs">${escapeHtml(t.date)}</td>
+                <td class="px-4 py-3 font-extrabold text-amber-400">${escapeHtml(t.winner)}</td>
+                <td class="px-4 py-3 text-cyan-300 text-xs">${escapeHtml(t.prize)}</td>`;
+            winnersBody.appendChild(tr);
+        }
+    });
+    if (!winnersBody.children.length) winnersBody.innerHTML = `<tr><td colspan="4" class="text-center py-6 text-slate-500">Aún no hay campeones registrados.</td></tr>`;
+}
+window.openAddTournamentModal = function() {
+    document.getElementById('tournModalTitle').innerHTML = `<i class="fa-solid fa-trophy text-purple-400"></i> Programar Torneo`;
+    document.getElementById('editTournIndex').value = "-1";
+    document.getElementById('tournName').value = "";
+    document.getElementById('tournDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('tournStatus').value = "Próximo";
+    document.getElementById('tournPrize').value = "";
+    document.getElementById('tournWinner').value = "-";
+    openModal('tournamentModal');
+};
+window.editTournament = function(idx) {
+    const t = currentTournaments[idx]; if (!t) return;
+    document.getElementById('tournModalTitle').innerHTML = `<i class="fa-solid fa-pen text-purple-400"></i> Editar Torneo`;
+    document.getElementById('editTournIndex').value = idx;
+    document.getElementById('tournName').value = t.name;
+    document.getElementById('tournDate').value = t.date;
+    document.getElementById('tournStatus').value = t.status;
+    document.getElementById('tournPrize').value = t.prize;
+    document.getElementById('tournWinner').value = t.winner || '-';
+    openModal('tournamentModal');
+};
+window.closeTournamentModal = function() { closeModal('tournamentModal'); };
+window.saveTournament = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editTournIndex').value);
+    const obj = { id: Date.now(), name: document.getElementById('tournName').value.trim(), date: document.getElementById('tournDate').value, status: document.getElementById('tournStatus').value, prize: document.getElementById('tournPrize').value.trim(), winner: document.getElementById('tournWinner').value.trim() || '-' };
+    if (!obj.name || !obj.prize) return;
+    if (idx >= 0) { currentTournaments[idx] = obj; showToast("Torneo modificado","success"); }
+    else { currentTournaments.unshift(obj); showToast("Torneo programado","success"); }
+    saveToLocalStorage(true); closeTournamentModal(); renderTournaments();
+};
+window.deleteTournament = function(idx) { currentTournaments.splice(idx, 1); saveToLocalStorage(true); renderTournaments(); showToast("Torneo eliminado","info"); };
+
+function renderRules() {
+    const container = document.getElementById('rulesList'); if (!container) return;
+    container.innerHTML = '';
+    const colors = { red:'border-red-500/30 text-red-400 bg-red-500/10', amber:'border-amber-500/30 text-amber-400 bg-amber-500/10', cyan:'border-cyan-500/30 text-cyan-400 bg-cyan-500/10', emerald:'border-emerald-500/30 text-emerald-400 bg-emerald-500/10', purple:'border-purple-500/30 text-purple-400 bg-purple-500/10' };
+    currentRules.forEach((r, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-3 hover:border-slate-700 transition animate-fade-up backdrop-blur-sm";
+        card.style.animationDelay = (idx * 0.04) + 's';
+        card.innerHTML = `
+            <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full text-xs font-bold border ${colors[r.color] || colors.red}"><i class="fa-solid ${r.icon || 'fa-circle-exclamation'} mr-1"></i> ${escapeHtml(r.category || 'Regla')}</span>
+                ${isAdminLoggedIn ? `
+                    <div class="flex items-center gap-1">
+                        <button onclick="editRule(${idx})" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteRule(${idx})" class="p-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs"><i class="fa-solid fa-trash"></i></button>
+                    </div>` : ''}
+            </div>
+            <h4 class="text-lg font-bold text-white">${escapeHtml(r.title)}</h4>
+            <p class="text-slate-300 text-xs leading-relaxed">${escapeHtml(r.desc)}</p>`;
+        container.appendChild(card);
+    });
+}
+window.openAddRuleModal = function() {
+    document.getElementById('ruleModalTitle').innerHTML = `<i class="fa-solid fa-plus text-red-400"></i> Agregar Regla`;
+    document.getElementById('editRuleIndex').value = "-1";
+    document.getElementById('ruleTitle').value = "";
+    document.getElementById('ruleDesc').value = "";
+    document.getElementById('ruleCategory').value = "General";
+    document.getElementById('ruleColor').value = "red";
+    openModal('ruleModal');
+};
+window.editRule = function(idx) {
+    const r = currentRules[idx]; if (!r) return;
+    document.getElementById('ruleModalTitle').innerHTML = `<i class="fa-solid fa-pen text-red-400"></i> Editar Regla`;
+    document.getElementById('editRuleIndex').value = idx;
+    document.getElementById('ruleTitle').value = r.title;
+    document.getElementById('ruleDesc').value = r.desc;
+    document.getElementById('ruleCategory').value = r.category || 'General';
+    document.getElementById('ruleColor').value = r.color || 'red';
+    openModal('ruleModal');
+};
+window.closeRuleModal = function() { closeModal('ruleModal'); };
+window.saveRule = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editRuleIndex').value);
+    const color = document.getElementById('ruleColor').value;
+    const iconMap = { red:'fa-ban', amber:'fa-clock', cyan:'fa-shield-halved', emerald:'fa-trophy', purple:'fa-gavel' };
+    const obj = { title: document.getElementById('ruleTitle').value.trim(), desc: document.getElementById('ruleDesc').value.trim(), category: document.getElementById('ruleCategory').value.trim() || 'General', color, icon: iconMap[color] || 'fa-gavel' };
+    if (!obj.title || !obj.desc) return;
+    if (idx >= 0) { currentRules[idx] = obj; showToast("Regla modificada","success"); }
+    else { currentRules.push(obj); showToast("Regla agregada","success"); }
+    saveToLocalStorage(true); closeRuleModal(); renderRules();
+};
+window.deleteRule = function(idx) { currentRules.splice(idx, 1); saveToLocalStorage(true); renderRules(); showToast("Regla eliminada","info"); };
+
+function renderBannedPlayers() {
+    const container = document.getElementById('bannedList'); if (!container) return;
+    container.innerHTML = '';
+    if (!currentBanned.length) { container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 bg-slate-900/60 rounded-2xl border border-slate-800"><i class="fa-solid fa-shield-halved text-4xl mb-2 text-emerald-400 block"></i> No hay jugadores baneados actualmente.</div>`; return; }
+    currentBanned.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-slate-900/80 border border-red-500/30 rounded-2xl p-6 space-y-4 hover:border-red-500/50 transition animate-fade-up backdrop-blur-sm";
+        card.style.animationDelay = (idx * 0.05) + 's';
+        card.innerHTML = `
+            <div class="flex items-start justify-between gap-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-400 shrink-0"><i class="fa-solid fa-user-slash"></i></div>
+                    <div>
+                        <h4 class="text-lg font-extrabold text-white leading-tight">${escapeHtml(p.name)}</h4>
+                        <p class="text-xs text-amber-300 font-semibold mt-0.5">⚓ Crew: ${escapeHtml(p.crew || 'Sin Crew')}</p>
+                    </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase bg-red-500/20 text-red-400 border border-red-500/40 shrink-0">${escapeHtml(p.status || 'Ban Permanente 🚫')}</span>
+            </div>
+            <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1"><span class="text-[11px] text-red-400 font-bold uppercase flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation"></i> Razón:</span><p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(p.reason)}</p></div>
+            <div class="flex items-center justify-between text-xs text-slate-400 pt-1 border-t border-slate-800/80">
+                <span><i class="fa-solid fa-calendar-xmark text-slate-500 mr-1"></i> ${escapeHtml(p.date)}</span>
+                ${isAdminLoggedIn ? `
+                    <div class="flex items-center gap-2">
+                        <button onclick="editBannedPlayer(${idx})" class="p-1.5 px-2.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-bold"><i class="fa-solid fa-pen"></i></button>
+                        <button onclick="deleteBannedPlayer(${idx})" class="p-1.5 px-2.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 text-xs font-bold"><i class="fa-solid fa-trash"></i></button>
+                    </div>` : ''}
+            </div>`;
+        container.appendChild(card);
+    });
+}
+window.openAddBannedModal = function() {
+    document.getElementById('bannedModalTitle').innerHTML = `<i class="fa-solid fa-user-xmark text-rose-500"></i> Registrar Baneado`;
+    document.getElementById('editBannedIndex').value = "-1";
+    ['bannedName','bannedCrew','bannedReason'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('bannedDate').value = new Date().toISOString().split('T')[0];
+    document.getElementById('bannedStatus').value = "Ban Permanente 🚫";
+    openModal('bannedModal');
+};
+window.editBannedPlayer = function(idx) {
+    const p = currentBanned[idx]; if (!p) return;
+    document.getElementById('bannedModalTitle').innerHTML = `<i class="fa-solid fa-pen text-rose-500"></i> Editar Sanción`;
+    document.getElementById('editBannedIndex').value = idx;
+    document.getElementById('bannedName').value = p.name;
+    document.getElementById('bannedCrew').value = p.crew || "";
+    document.getElementById('bannedReason').value = p.reason;
+    document.getElementById('bannedDate').value = p.date;
+    document.getElementById('bannedStatus').value = p.status || "Ban Permanente 🚫";
+    openModal('bannedModal');
+};
+window.closeBannedModal = function() { closeModal('bannedModal'); };
+window.saveBannedPlayer = function(e) {
+    e.preventDefault();
+    const idx = parseInt(document.getElementById('editBannedIndex').value);
+    const obj = { name: document.getElementById('bannedName').value.trim(), crew: document.getElementById('bannedCrew').value.trim() || 'Sin Crew', reason: document.getElementById('bannedReason').value.trim(), date: document.getElementById('bannedDate').value, status: document.getElementById('bannedStatus').value };
+    if (!obj.name || !obj.reason) return;
+    if (idx >= 0) { currentBanned[idx] = obj; showToast(`Sanción de ${obj.name} actualizada`,"success"); }
+    else { currentBanned.unshift(obj); showToast(`${obj.name} añadido a baneados`,"success"); }
+    saveToLocalStorage(true); closeBannedModal(); renderBannedPlayers();
+};
+window.deleteBannedPlayer = function(idx) { const p = currentBanned[idx]; currentBanned.splice(idx, 1); saveToLocalStorage(true); renderBannedPlayers(); showToast(`Jugador ${p ? p.name : ''} eliminado`,"info"); };
+
+window.switchTab = function(tabId) {
+    const tabs = ['inicio','leaderboards','frutas','paises','creadores','torneos','reglas','banned'];
+    tabs.forEach(id => {
+        const sec = document.getElementById(`section-${id}`);
+        const nav = document.getElementById(`nav-${id}`);
+        if (sec) { sec.classList.add('hidden'); sec.classList.remove('animate-fade-in'); }
+        if (nav) nav.className = "nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/40 transition";
+    });
+    const tSec = document.getElementById(`section-${tabId}`);
+    const tNav = document.getElementById(`nav-${tabId}`);
+    if (tSec) { tSec.classList.remove('hidden'); void tSec.offsetWidth; tSec.classList.add('animate-fade-in'); }
+    if (tNav) tNav.className = "nav-btn px-3 py-2 rounded-lg text-sm font-semibold text-cyan-400 bg-slate-800/60 border border-cyan-500/30 transition";
+    if (tabId === 'leaderboards') renderLeaderboard();
+    if (tabId === 'frutas')       renderFruits();
+    if (tabId === 'paises')       renderCountries();
+    if (tabId === 'creadores')    renderCreators();
+    if (tabId === 'torneos')      renderTournaments();
+    if (tabId === 'reglas')       renderRules();
+    if (tabId === 'banned')       renderBannedPlayers();
+};
+window.toggleMobileMenu = function() { document.getElementById('mobileMenu').classList.toggle('hidden'); };
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        MODAL_IDS.forEach(id => { const el = document.getElementById(id); if (el && !el.classList.contains('hidden')) closeModal(id); });
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    setTheme(currentTheme);
+    setupFirestoreSync();
+    fillSelects();
+    renderAllUI();
+});
+</script>
+</body>
+</html>
